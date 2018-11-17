@@ -1,15 +1,13 @@
 import { Component, Prop, State } from "@stencil/core";
 import { DocumentNode } from "graphql";
-import { ApolloQueryResult } from "apollo-client";
-
-export type OnQueryReadyFn<T> = (result: ApolloQueryResult<T>) => JSX.Element | JSX.Element[] | undefined | null;
+import { OnQueryReadyFn } from "./types";
 
 @Component({
   tag: 'apollo-query'
 })
 export class ApolloQuery {
-  @Prop({ mutable: true, reflectToAttr: true }) query: DocumentNode;
-  @Prop({ mutable: true, reflectToAttr: true}) onReady: OnQueryReadyFn<any>;
+  @Prop() query: DocumentNode;
+  @Prop() onReady: OnQueryReadyFn<any>;
   @Prop({ connect: 'apollo-client-controller'}) apolloProviderCtrlConnector;
   @State() children: JSX.Element | JSX.Element[] | null | undefined;
   subscription: ZenObservable.Subscription;
@@ -25,7 +23,8 @@ export class ApolloQuery {
   async startSubscription(){
     this.stopSubscription();
     const apolloProviderCtrl: HTMLApolloClientControllerElement = await this.apolloProviderCtrlConnector.componentOnReady();
-    this.subscription = apolloProviderCtrl.getClient().watchQuery({
+    const client = await apolloProviderCtrl.getClient();
+    this.subscription = client.watchQuery({
       query: this.query
     }).subscribe(result => {
       this.children = this.onReady(result);
@@ -38,7 +37,7 @@ export class ApolloQuery {
   }
   render(){
     return [
-      <slot></slot>,
+      <slot/>,
       this.children
     ]
   }

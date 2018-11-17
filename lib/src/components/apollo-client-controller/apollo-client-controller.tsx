@@ -7,11 +7,11 @@ import { ApolloClient } from "apollo-client";
 export class ApolloClientController {
   private client: ApolloClient<any>;
   @Method()
-  create(client: ApolloClient<any>){
+  async create(client: ApolloClient<any>){
     this.client = client;
   }
   @Method()
-  getClient(){
+  async getClient(){
     return this.client;
   }
 }

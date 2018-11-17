@@ -5,7 +5,7 @@ import { ApolloClient } from 'apollo-client';
   tag: 'apollo-provider'
 })
 export class ApolloProvider {
-  @Prop({ mutable: true, reflectToAttr: true }) client: ApolloClient<any>;
+  @Prop() client: ApolloClient<any>;
   @Prop({ connect: 'apollo-client-controller' }) apolloClientCtrl: HTMLApolloClientControllerElement;
   componentDidLoad(){
     this.setClient();

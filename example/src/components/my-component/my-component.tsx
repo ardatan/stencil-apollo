@@ -1,10 +1,8 @@
 import { Component, Prop } from '@stencil/core';
+import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
-import ApolloClient from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
 
-export const ALL_POSTS_QUERY = gql`
+const ALL_POSTS_QUERY = gql`
   query allPosts {
     posts {
       id
@@ -19,7 +17,7 @@ export const ALL_POSTS_QUERY = gql`
   }
 `;
 
-export const UPVOTE_POST = gql`
+const UPVOTE_POST = gql`
 mutation upvotePost($postId: Int!) {
   upvotePost(postId: $postId) {
     id
@@ -30,11 +28,8 @@ mutation upvotePost($postId: Int!) {
 
 
 const client = new ApolloClient({
-  link: new HttpLink({
-    uri: 'https://simple-posts-authors-graphql.glitch.me'
-  }),
-  cache: new InMemoryCache()
-});
+    uri: 'https://0vw9j9w0l5.lp.gql.zone/graphql'
+  });
 
 @Component({
   tag: 'my-component',

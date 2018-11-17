@@ -10,7 +10,7 @@
       "esnext.asynciterable"
     ],
     "moduleResolution": "node",
-    "module": "es2015",
+    "module": "esnext",
     "target": "es2017",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
