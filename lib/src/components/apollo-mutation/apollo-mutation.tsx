@@ -11,11 +11,11 @@ export class ApolloMutation {
   @Prop({ connect: 'apollo-client-controller'}) apolloProviderCtrlConnector;
   @State() children: JSX.Element | JSX.Element[] | null | undefined;
   subscription: ZenObservable.Subscription;
-  componentDidLoad(){
-    this.runMutation();
+  componentWillLoad(){
+    return this.runMutation();
   }
   componentWillUpdate(){
-    this.runMutation();
+    return this.runMutation();
   }
   async runMutation(){
     const apolloProviderCtrl: HTMLApolloClientControllerElement = await this.apolloProviderCtrlConnector.componentOnReady();

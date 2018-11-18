@@ -7,14 +7,14 @@ import { ApolloClient } from 'apollo-client';
 export class ApolloProvider {
   @Prop() client: ApolloClient<any>;
   @Prop({ connect: 'apollo-client-controller' }) apolloClientCtrl: HTMLApolloClientControllerElement;
-  componentDidLoad(){
-    this.setClient();
+  componentWillLoad(){
+    return this.setClient();
   }
   componentWillUpdate(){
-    this.setClient();
+    return this.setClient();
   }
   setClient(){
-    this.apolloClientCtrl.create(this.client);
+    return this.apolloClientCtrl.create(this.client);
   }
   render(){
     return <slot />

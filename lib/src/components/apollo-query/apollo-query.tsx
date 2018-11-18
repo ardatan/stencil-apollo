@@ -11,14 +11,14 @@ export class ApolloQuery {
   @Prop({ connect: 'apollo-client-controller'}) apolloProviderCtrlConnector;
   @State() children: JSX.Element | JSX.Element[] | null | undefined;
   subscription: ZenObservable.Subscription;
-  componentDidLoad(){
-    this.startSubscription();
+  componentWillLoad(){
+    return this.startSubscription();
   }
   componentWillUpdate(){
-    this.startSubscription();
+    return this.startSubscription();
   }
   componentDidUnload(){
-    this.stopSubscription();
+    return this.stopSubscription();
   }
   async startSubscription(){
     this.stopSubscription();
