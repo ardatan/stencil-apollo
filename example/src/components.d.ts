@@ -12,6 +12,15 @@ import 'stencil-apollo';
 
 export namespace Components {
 
+  interface MyComponentWithCodegen {
+    'first': string;
+    'last': string;
+  }
+  interface MyComponentWithCodegenAttributes extends StencilHTMLAttributes {
+    'first'?: string;
+    'last'?: string;
+  }
+
   interface MyComponent {
     'first': string;
     'last': string;
@@ -24,13 +33,21 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'MyComponentWithCodegen': Components.MyComponentWithCodegen;
     'MyComponent': Components.MyComponent;
   }
 
   interface StencilIntrinsicElements {
+    'my-component-with-codegen': Components.MyComponentWithCodegenAttributes;
     'my-component': Components.MyComponentAttributes;
   }
 
+
+  interface HTMLMyComponentWithCodegenElement extends Components.MyComponentWithCodegen, HTMLStencilElement {}
+  var HTMLMyComponentWithCodegenElement: {
+    prototype: HTMLMyComponentWithCodegenElement;
+    new (): HTMLMyComponentWithCodegenElement;
+  };
 
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   var HTMLMyComponentElement: {
@@ -39,10 +56,12 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'my-component-with-codegen': HTMLMyComponentWithCodegenElement
     'my-component': HTMLMyComponentElement
   }
 
   interface ElementTagNameMap {
+    'my-component-with-codegen': HTMLMyComponentWithCodegenElement;
     'my-component': HTMLMyComponentElement;
   }
 

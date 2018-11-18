@@ -33,10 +33,12 @@ export namespace Components {
   interface ApolloMutation {
     'mutation': DocumentNode;
     'onReady': OnMutationReadyFn;
+    'variables': any;
   }
   interface ApolloMutationAttributes extends StencilHTMLAttributes {
     'mutation'?: DocumentNode;
     'onReady'?: OnMutationReadyFn;
+    'variables'?: any;
   }
 
   interface ApolloProvider {
@@ -49,10 +51,12 @@ export namespace Components {
   interface ApolloQuery {
     'onReady': OnQueryReadyFn<any>;
     'query': DocumentNode;
+    'variables': any;
   }
   interface ApolloQueryAttributes extends StencilHTMLAttributes {
     'onReady'?: OnQueryReadyFn<any>;
     'query'?: DocumentNode;
+    'variables'?: any;
   }
 }
 

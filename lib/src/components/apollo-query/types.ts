@@ -1,2 +1,2 @@
-import { ApolloQueryResult } from "apollo-client";
-export type OnQueryReadyFn<T> = (result: ApolloQueryResult<T>) => JSX.Element | JSX.Element[] | undefined | null;
+import { ApolloQueryResult, OperationVariables } from "apollo-client";
+export type OnQueryReadyFn<TData = {}, _TVariables = OperationVariables> = (result: ApolloQueryResult<TData>) => JSX.Element | JSX.Element[] | undefined | null;

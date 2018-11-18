@@ -8,6 +8,7 @@ import { OnQueryReadyFn } from "./types";
 export class ApolloQuery {
   @Prop() query: DocumentNode;
   @Prop() onReady: OnQueryReadyFn<any>;
+  @Prop() variables: any;
   @Prop({ connect: 'apollo-client-controller'}) apolloProviderCtrlConnector;
   @State() children: JSX.Element | JSX.Element[] | null | undefined;
   subscription: ZenObservable.Subscription;
@@ -25,7 +26,8 @@ export class ApolloQuery {
     const apolloProviderCtrl: HTMLApolloClientControllerElement = await this.apolloProviderCtrlConnector.componentOnReady();
     const client = await apolloProviderCtrl.getClient();
     this.subscription = client.watchQuery({
-      query: this.query
+      query: this.query,
+      variables: this.variables
     }).subscribe(result => {
       this.children = this.onReady(result);
     })

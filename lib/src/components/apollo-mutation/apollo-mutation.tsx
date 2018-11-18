@@ -8,6 +8,7 @@ import { OnMutationReadyFn } from "./types";
 export class ApolloMutation {
   @Prop() mutation: DocumentNode;
   @Prop() onReady: OnMutationReadyFn;
+  @Prop() variables: any;
   @Prop({ connect: 'apollo-client-controller'}) apolloProviderCtrlConnector;
   @State() children: JSX.Element | JSX.Element[] | null | undefined;
   subscription: ZenObservable.Subscription;
@@ -22,6 +23,7 @@ export class ApolloMutation {
     const client = await apolloProviderCtrl.getClient();
     this.children = this.onReady(args => client.mutate({
       mutation: this.mutation,
+      variables: this.variables,
       ...args
     }));
   }
