@@ -10,6 +10,9 @@ import '@stencil/core';
 
 import {
   ApolloClient,
+  MutationOptions,
+  SubscriptionOptions,
+  WatchQueryOptions,
 } from 'apollo-client';
 import {
   DocumentNode,
@@ -20,6 +23,9 @@ import {
 import {
   OnQueryReadyFn,
 } from './components/apollo-query/types';
+import {
+  OnSubscriptionReadyFn,
+} from './components/apollo-subscription/types';
 
 
 export namespace Components {
@@ -33,11 +39,13 @@ export namespace Components {
   interface ApolloMutation {
     'mutation': DocumentNode;
     'onReady': OnMutationReadyFn;
+    'options': MutationOptions;
     'variables': any;
   }
   interface ApolloMutationAttributes extends StencilHTMLAttributes {
     'mutation'?: DocumentNode;
     'onReady'?: OnMutationReadyFn;
+    'options'?: MutationOptions;
     'variables'?: any;
   }
 
@@ -50,12 +58,27 @@ export namespace Components {
 
   interface ApolloQuery {
     'onReady': OnQueryReadyFn<any>;
+    'options': WatchQueryOptions;
     'query': DocumentNode;
     'variables': any;
   }
   interface ApolloQueryAttributes extends StencilHTMLAttributes {
     'onReady'?: OnQueryReadyFn<any>;
+    'options'?: WatchQueryOptions;
     'query'?: DocumentNode;
+    'variables'?: any;
+  }
+
+  interface ApolloSubscription {
+    'onReady': OnSubscriptionReadyFn<any>;
+    'options': SubscriptionOptions;
+    'subscription': DocumentNode;
+    'variables': any;
+  }
+  interface ApolloSubscriptionAttributes extends StencilHTMLAttributes {
+    'onReady'?: OnSubscriptionReadyFn<any>;
+    'options'?: SubscriptionOptions;
+    'subscription'?: DocumentNode;
     'variables'?: any;
   }
 }
@@ -66,6 +89,7 @@ declare global {
     'ApolloMutation': Components.ApolloMutation;
     'ApolloProvider': Components.ApolloProvider;
     'ApolloQuery': Components.ApolloQuery;
+    'ApolloSubscription': Components.ApolloSubscription;
   }
 
   interface StencilIntrinsicElements {
@@ -73,6 +97,7 @@ declare global {
     'apollo-mutation': Components.ApolloMutationAttributes;
     'apollo-provider': Components.ApolloProviderAttributes;
     'apollo-query': Components.ApolloQueryAttributes;
+    'apollo-subscription': Components.ApolloSubscriptionAttributes;
   }
 
 
@@ -100,11 +125,18 @@ declare global {
     new (): HTMLApolloQueryElement;
   };
 
+  interface HTMLApolloSubscriptionElement extends Components.ApolloSubscription, HTMLStencilElement {}
+  var HTMLApolloSubscriptionElement: {
+    prototype: HTMLApolloSubscriptionElement;
+    new (): HTMLApolloSubscriptionElement;
+  };
+
   interface HTMLElementTagNameMap {
     'apollo-client-controller': HTMLApolloClientControllerElement
     'apollo-mutation': HTMLApolloMutationElement
     'apollo-provider': HTMLApolloProviderElement
     'apollo-query': HTMLApolloQueryElement
+    'apollo-subscription': HTMLApolloSubscriptionElement
   }
 
   interface ElementTagNameMap {
@@ -112,6 +144,7 @@ declare global {
     'apollo-mutation': HTMLApolloMutationElement;
     'apollo-provider': HTMLApolloProviderElement;
     'apollo-query': HTMLApolloQueryElement;
+    'apollo-subscription': HTMLApolloSubscriptionElement;
   }
 
 
