@@ -24,7 +24,7 @@
     "@types/node": "10.12.9",
     "codegen-templates-scripts": "0.14.1",
     "graphql": "14.0.2",
-    "graphql-codegen-plugin-handlebars-helpers": "0.14.1"
+    "graphql-codegen-plugin-handlebars-helpers": "0.15.1"
   },
   "main": "./dist/index.js",
   "typings": "dist/index.d.ts",
