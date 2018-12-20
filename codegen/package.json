@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@types/handlebars": "4.0.40",
-    "@types/node": "10.12.9",
+    "@types/node": "10.12.18",
     "codegen-templates-scripts": "0.14.1",
     "graphql": "14.0.2",
     "graphql-codegen-plugin-handlebars-helpers": "0.15.1"
