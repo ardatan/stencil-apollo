@@ -66,12 +66,12 @@
   resolved "https://registry.yarnpkg.com/@types/deepmerge/-/deepmerge-2.1.0.tgz#22f175e5cb55874fe818caa6fd50a1d98fc3d748"
   integrity sha512-/0Ct/q5g+SgaACZ+A0ylY3071nEBN7QDnTWiCtaB3fx24UpoAQXf25yNVloOYVUis7jytM1F1WC78+EOwXkQJQ==
 
-"@types/graphql@^14.0.3":
+"@types/graphql@14.0.3":
   version "14.0.3"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-14.0.3.tgz#389e2e5b83ecdb376d9f98fae2094297bc112c1c"
   integrity sha512-TcFkpEjcQK7w8OcrQcd7iIBPjU0rdyi3ldj6d0iJ4PPSzbWqPBvXj9KSwO14hTOX2dm9RoiH7VuxksJLNYdXUQ==
 
-"@types/handlebars@^4.0.39":
+"@types/handlebars@4.0.39":
   version "4.0.39"
   resolved "https://registry.yarnpkg.com/@types/handlebars/-/handlebars-4.0.39.tgz#961fb54db68030890942e6aeffe9f93a957807bd"
   integrity sha512-vjaS7Q0dVqFp85QhyPSZqDKnTTCemcSHNHFvDdalO1s0Ifz5KuE64jQD5xoUkfdWwF4WpqdJEl7LsWH8rzhKJA==
@@ -81,7 +81,7 @@
   resolved "https://registry.yarnpkg.com/@types/is-glob/-/is-glob-4.0.0.tgz#fb8a2bff539025d4dcd6d5efe7689e03341b876d"
   integrity sha512-zC/2EmD8scdsGIeE+Xg7kP7oi9VP90zgMQtm9Cr25av4V+a+k8slQyiT60qSw8KORYrOKlPXfHwoa1bQbRzskQ==
 
-"@types/node@^10.12.9":
+"@types/node@10.12.9":
   version "10.12.9"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.9.tgz#a07bfa74331471e1dc22a47eb72026843f7b95c8"
   integrity sha512-eajkMXG812/w3w4a1OcBlaTwsFPO5F7fJ/amy+tieQxEMWBlbV1JGSjkFM+zkHNf81Cad+dfIRA+IBkvmvdAeA==
@@ -2341,7 +2341,7 @@ graphql-anywhere@^4.1.0-alpha.0:
   dependencies:
     apollo-utilities "^1.0.25"
 
-graphql-code-generator@^0.14.1:
+graphql-code-generator@0.14.1:
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/graphql-code-generator/-/graphql-code-generator-0.14.1.tgz#6e91a76d05dba1bd13bddfe45799bffa959224ae"
   integrity sha512-3tCBx94lz+93oXHHIvtuqWm3PfungZ7SiskwcKZO5PJHv4f0BxCLHOT9B6EEdvqVAIAnSRdZTvqj+hHJwWXfTQ==
@@ -2403,7 +2403,7 @@ graphql-codegen-plugin-helpers@0.14.1:
     graphql-codegen-core "0.14.1"
     import-from "2.1.0"
 
-graphql-codegen-typescript-client@^0.14.1:
+graphql-codegen-typescript-client@0.14.1:
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/graphql-codegen-typescript-client/-/graphql-codegen-typescript-client-0.14.1.tgz#7426c8816e0df0402c44435ca5700236816ddf27"
   integrity sha512-NcAB3Py4gizQyncATJGkhn8vw5NOF7K+1xkaXS0lTgN1RopzbdqaHF6/NrZyHD4oR338CsOXc8ohLSJHOUTh4A==
@@ -2412,7 +2412,7 @@ graphql-codegen-typescript-client@^0.14.1:
     graphql-codegen-plugin-helpers "0.14.1"
     graphql-codegen-typescript-common "0.14.1"
 
-graphql-codegen-typescript-common@0.14.1, graphql-codegen-typescript-common@^0.14.1:
+graphql-codegen-typescript-common@0.14.1:
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/graphql-codegen-typescript-common/-/graphql-codegen-typescript-common-0.14.1.tgz#4e95782ec4458807c9c712ae3e4b6dc828428c66"
   integrity sha512-F3MeyVBuZ0qKVOzEzsMkvkCpd0HCrlteL4DcYMpNIl3rcjVDnPxhGcp69KfC7G0ZxcQ6EG1J8Ia+GETj49+//g==
@@ -5097,7 +5097,7 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rollup-plugin-commonjs@^9.2.0:
+rollup-plugin-commonjs@9.2.0:
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/rollup-plugin-commonjs/-/rollup-plugin-commonjs-9.2.0.tgz#4604e25069e0c78a09e08faa95dc32dec27f7c89"
   integrity sha512-0RM5U4Vd6iHjL6rLvr3lKBwnPsaVml+qxOGaaNUWN1lSq6S33KhITOfHmvxV3z2vy9Mk4t0g4rNlVaJJsNQPWA==
