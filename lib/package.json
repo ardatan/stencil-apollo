@@ -6,6 +6,7 @@
   "main": "dist/index.js",
   "types": "dist/types/components.d.ts",
   "collection": "dist/collection/collection-manifest.json",
+  "private": false,
   "files": [
     "dist/"
   ],

@@ -18,7 +18,7 @@ export namespace {{convert name}} {
         variables ?: {{#if @root.config.noNamespaces}}{{ convert name }}{{/if}}Variables;
         onReady ?: import('stencil-apollo/dist/types/components/apollo-{{ toLowerCase operationType }}/types').On{{ convert operationType }}ReadyFn<{{#if @root.config.noNamespaces}}{{ convert name }}{{/if}}{{ convert operationType }}, {{#if @root.config.noNamespaces}}{{ convert name }}{{/if}}Variables>;
     }
-     export const {{#if @root.config.noNamespaces}}{{ convert name }}{{/if}}Component: FunctionalComponent<ComponentProps> = (props, children, utils) => {
+     export const {{#if @root.config.noNamespaces}}{{ convert name }}{{/if}}Component: FunctionalComponent<ComponentProps> = (props, children) => {
         return (
             <apollo-{{ toLowerCase operationType }}
             {{ toLowerCase operationType }}={ {{#if @root.config.noNamespaces}}{{ convert name }}{{/if}}Document }

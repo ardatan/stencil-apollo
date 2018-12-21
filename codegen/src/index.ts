@@ -7,16 +7,15 @@ import * as rootTemplate from './root.handlebars';
 import { generateFragments, gql } from './helpers';
 import { extname } from 'path';
 
-export interface TypeScriptReactApolloConfig extends TypeScriptCommonConfig {
+export interface TypeScriptStencilApolloConfig extends TypeScriptCommonConfig {
   noGraphqlTag?: boolean;
   noNamespaces?: boolean;
-  noHOC?: boolean;
 }
 
-export const plugin: PluginFunction<TypeScriptReactApolloConfig> = async (
+export const plugin: PluginFunction<TypeScriptStencilApolloConfig> = async (
   schema: GraphQLSchema,
   documents: DocumentFile[],
-  config: TypeScriptReactApolloConfig
+  config: TypeScriptStencilApolloConfig
 ): Promise<string> => {
   const { templateContext, convert } = initCommonTemplate(Handlebars, schema, config);
   const transformedDocuments = transformDocumentsFiles(schema, documents);

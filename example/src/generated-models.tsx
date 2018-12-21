@@ -113,7 +113,7 @@ export namespace UpvotePost {
   }
   export const Component: FunctionalComponent<ComponentProps> = (
     props,
-    children
+    children,
   ) => {
     return (
       <apollo-mutation mutation={Document} {...props}>

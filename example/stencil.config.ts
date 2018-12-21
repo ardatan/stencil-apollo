@@ -12,10 +12,11 @@ export const config: Config = {
     include: ['../node_modules/**'],
     namedExports: {
       '../node_modules/graphql-anywhere/lib/async.js': ['graphql'],
-      '../node_modules/graphql/language/parser.mjs': ['default']
+      '../node_modules/graphql/language/parser.mjs': ['default'],
+      '../node_modules/apollo-utilities/lib/index.js': ['default']
     },
     extensions: [
       '.js', '.mjs'
-    ]
+    ],
   } as any
 };
