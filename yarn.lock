@@ -2398,10 +2398,10 @@ graphql-codegen-core@0.15.1:
     ts-log "2.1.4"
     winston "3.1.0"
 
-graphql-codegen-plugin-handlebars-helpers@0.15.1:
-  version "0.15.1"
-  resolved "https://registry.yarnpkg.com/graphql-codegen-plugin-handlebars-helpers/-/graphql-codegen-plugin-handlebars-helpers-0.15.1.tgz#959bc35d24303ff804c905b3647190396452971d"
-  integrity sha512-t0deRF0topuDnuHa+jPIz8M/Ngm7aoXknJ80iWAdCjgzw7r7El4z+kIVHpNHq1NWdN3ribLmDkJql2oEWqmfjQ==
+graphql-codegen-plugin-handlebars-helpers@0.15.2:
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-plugin-handlebars-helpers/-/graphql-codegen-plugin-handlebars-helpers-0.15.2.tgz#2a0a5c6c687589c86a891e392fff24012b3721bc"
+  integrity sha512-q3VE1lmLgAZsKGJW217pFKOWkgvvZO6nnMexRBQ5qbstN1DSp+tZDg0tcHg//zLLs8Bji+Clyirf4cvQ5Btqmw==
   dependencies:
     change-case "3.0.2"
     common-tags "1.8.0"
