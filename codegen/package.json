@@ -17,7 +17,7 @@
     "dependency-graph": "^0.8.0",
     "graphql-codegen-core": "0.14.1",
     "graphql-codegen-plugin-helpers": "0.15.1",
-    "graphql-codegen-typescript-common": "0.14.1"
+    "graphql-codegen-typescript-common": "0.15.2"
   },
   "devDependencies": {
     "@types/handlebars": "4.0.40",
