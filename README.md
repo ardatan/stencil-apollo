@@ -42,3 +42,23 @@ Then add `stencil-apollo` to your global file which is `src/global/app.ts` by de
 ```ts
 import 'stencil-apollo';
 ```
+
+
+Finally you can provide your `ApolloClient` instance on your root component, then use components everywhere in your project;
+
+```tsx
+<apollo-provider client={new ApolloClient(...)}>
+...
+</apollo-provider>
+```
+
+```tsx
+  <apollo-query query={ gql`query { foo }` } onReady={
+    ({ data, loading }) => {
+     if (loading) {
+      return 'Loading';
+     }
+     return <p>Foo: {data.foo}</p>;
+    }
+  } />
+```
