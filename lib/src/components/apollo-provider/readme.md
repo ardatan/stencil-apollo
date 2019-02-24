@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                |
-| -------- | --------- | ----------- | ------------------- |
-| `client` | --        |             | `ApolloClient<any>` |
+| Property | Attribute | Description | Type                | Default     |
+| -------- | --------- | ----------- | ------------------- | ----------- |
+| `client` | --        |             | `ApolloClient<any>` | `undefined` |
 
 
 ----------------------------------------------

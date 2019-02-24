@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property    | Attribute | Description | Type                                                           |
-| ----------- | --------- | ----------- | -------------------------------------------------------------- |
-| `mutation`  | --        |             | `DocumentNode`                                                 |
-| `onReady`   | --        |             | `OnMutationReadyFn<{}, OperationVariables>`                    |
-| `options`   | --        |             | `MutationOptions<{ [key: string]: any; }, OperationVariables>` |
-| `variables` | --        |             | `any`                                                          |
+| Property    | Attribute   | Description | Type                                                           | Default     |
+| ----------- | ----------- | ----------- | -------------------------------------------------------------- | ----------- |
+| `mutation`  | `mutation`  |             | `any`                                                          | `undefined` |
+| `onReady`   | --          |             | `(mutationFn: MutationFn<{}, OperationVariables>) => any`      | `undefined` |
+| `options`   | --          |             | `MutationOptions<{ [key: string]: any; }, OperationVariables>` | `undefined` |
+| `variables` | `variables` |             | `any`                                                          | `undefined` |
 
 
 ----------------------------------------------

@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property    | Attribute | Description | Type                                      |
-| ----------- | --------- | ----------- | ----------------------------------------- |
-| `onReady`   | --        |             | `OnQueryReadyFn<any, OperationVariables>` |
-| `options`   | --        |             | `WatchQueryOptions<OperationVariables>`   |
-| `query`     | --        |             | `DocumentNode`                            |
-| `variables` | --        |             | `any`                                     |
+| Property    | Attribute   | Description | Type                                      | Default     |
+| ----------- | ----------- | ----------- | ----------------------------------------- | ----------- |
+| `onReady`   | --          |             | `(result: ApolloQueryResult<any>) => any` | `undefined` |
+| `options`   | --          |             | `WatchQueryOptions<OperationVariables>`   | `undefined` |
+| `query`     | `query`     |             | `any`                                     | `undefined` |
+| `variables` | `variables` |             | `any`                                     | `undefined` |
 
 
 ----------------------------------------------

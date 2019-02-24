@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property       | Attribute | Description | Type                                             |
-| -------------- | --------- | ----------- | ------------------------------------------------ |
-| `onReady`      | --        |             | `OnSubscriptionReadyFn<any, OperationVariables>` |
-| `options`      | --        |             | `SubscriptionOptions<OperationVariables>`        |
-| `subscription` | --        |             | `DocumentNode`                                   |
-| `variables`    | --        |             | `any`                                            |
+| Property       | Attribute      | Description | Type                                      | Default     |
+| -------------- | -------------- | ----------- | ----------------------------------------- | ----------- |
+| `onReady`      | --             |             | `(result: any) => any`                    | `undefined` |
+| `options`      | --             |             | `SubscriptionOptions<OperationVariables>` | `undefined` |
+| `subscription` | `subscription` |             | `any`                                     | `undefined` |
+| `variables`    | `variables`    |             | `any`                                     | `undefined` |
 
 
 ----------------------------------------------
