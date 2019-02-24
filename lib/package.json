@@ -1,6 +1,6 @@
 {
   "name": "stencil-apollo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Stencil Component Starter",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
@@ -17,15 +17,15 @@
     "test.watch": "jest --watch"
   },
   "peerDependencies": {
-    "apollo-client": "^2.4.2",
-    "graphql": "^14.0.0",
-    "graphql-tag": "^2.9.2"
+    "apollo-client": "^2.4.13",
+    "graphql": "^14.1.1",
+    "graphql-tag": "^2.10.1"
   },
   "devDependencies": {
-    "@stencil/core": "0.16.1",
+    "@stencil/core": "0.18.0",
     "apollo-boost": "0.1.23",
-    "graphql": "14.0.2",
-    "graphql-tag": "2.10.0"
+    "graphql": "14.1.1",
+    "graphql-tag": "2.10.1"
   },
   "repository": {
     "type": "git",
