@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@stencil/core": "0.18.0",
-    "apollo-boost": "0.1.23",
+    "apollo-boost": "0.1.28",
     "graphql": "14.1.1",
     "graphql-tag": "2.10.1"
   },
