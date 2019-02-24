@@ -1,4 +1,6 @@
 # Stencil Apollo
+[![npm version](https://badge.fury.io/js/stencil-apollo.svg)](https://badge.fury.io/js/stencil-apollo)
+
 Stencil-Apollo is a collection of web components built using [Stencil](https://github.com/ionic-team/stencil).
 
 [**Release Blog Post:** Stencil-Apollo - Stencil meets GraphQL](https://medium.com/the-guild/stencil-apollo-stencil-meets-graphql-6fec577ee615)
