@@ -29,7 +29,7 @@
     "graphql-codegen-add": "0.17.0",
     "graphql-codegen-typescript-client": "0.17.0",
     "graphql-codegen-typescript-common": "0.17.0",
-    "graphql-codegen-typescript-stencil-apollo": "0.17.0"
+    "graphql-codegen-typescript-stencil-apollo": "0.18.0"
   },
   "repository": {
     "type": "git",
