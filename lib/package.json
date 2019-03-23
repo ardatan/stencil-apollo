@@ -1,7 +1,7 @@
 {
   "name": "stencil-apollo",
   "version": "0.0.2",
-  "description": "Stencil Component Starter",
+  "description": "Stencil Apollo",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
   "types": "dist/types/components.d.ts",
@@ -22,21 +22,21 @@
     "graphql-tag": "^2.10.1"
   },
   "devDependencies": {
-    "@stencil/core": "0.18.0",
-    "apollo-boost": "0.1.23",
+    "@stencil/core": "0.18.1",
+    "apollo-boost": "0.3.1",
     "graphql": "14.1.1",
     "graphql-tag": "2.10.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ionic-team/stencil-component-starter.git"
+    "url": "git+https://github.com/ardatan/stencil-apollo.git"
   },
-  "author": "Ionic Team",
+  "author": "Arda TANRIKULU",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ionic-team/stencil"
+    "url": "https://github.com/ardatan/stencil-apollo"
   },
-  "homepage": "https://github.com/ionic-team/stencil",
+  "homepage": "https://github.com/ardatan/stencil-apollo",
   "jest": {
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
