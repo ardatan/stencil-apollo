@@ -18,22 +18,43 @@ export class ApolloQuery {
     return this.startSubscription();
   }
   componentWillUpdate(){
+    this.stopSubscription();
     return this.startSubscription();
   }
   componentDidUnload(){
     return this.stopSubscription();
   }
-  async startSubscription(){
-    this.stopSubscription();
-    const apolloProviderCtrl: HTMLApolloClientControllerElement = await this.apolloProviderCtrlConnector.componentOnReady();
-    const client = await apolloProviderCtrl.getClient();
-    this._subscription = client.watchQuery({
-      query: this.query,
-      variables: this.variables,
-      ...this.options
-    }).subscribe(result => {
-      this.children = this.onReady(result);
-    })
+  startSubscription(){
+    let firstResolved = false;
+    return new Promise(async (resolve, reject) => {
+      try {
+        this.stopSubscription();
+        const apolloProviderCtrl: HTMLApolloClientControllerElement = await this.apolloProviderCtrlConnector.componentOnReady();
+        const client = await apolloProviderCtrl.getClient();
+        this._subscription = client.watchQuery({
+          query: this.query,
+          variables: this.variables,
+          ...this.options
+        }).subscribe(result => {
+          if (!firstResolved) {
+            firstResolved = true;
+            resolve();
+          }
+          this.children = this.onReady(result);
+        },
+        e => {
+          if (!firstResolved) {
+            firstResolved = true;
+            reject(e);
+          } else {
+            throw e;
+          }
+        })
+      } catch (e) {
+        firstResolved = true;
+        reject(e);
+      }
+    });
   }
   stopSubscription(){
     if(this._subscription){

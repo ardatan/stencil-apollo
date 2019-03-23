@@ -25,13 +25,10 @@ export namespace AllPosts {
   export type Posts = {
     __typename?: "Post";
 
-    id: number;
-
     title: Maybe<string>;
 
     votes: Maybe<number>;
 
-    author: Maybe<Author>;
   };
 
   export type Author = {

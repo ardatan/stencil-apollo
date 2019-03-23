@@ -14,12 +14,12 @@ export class ApolloMutation {
   @Prop({ connect: 'apollo-client-controller'}) apolloProviderCtrlConnector;
   @State() children: JSX.Element | JSX.Element[] | null | undefined;
   componentWillLoad(){
-    return this.runMutation();
+    return this.passMutation();
   }
   componentWillUpdate(){
-    return this.runMutation();
+    return this.passMutation();
   }
-  async runMutation(){
+  async passMutation(){
     const apolloProviderCtrl: HTMLApolloClientControllerElement = await this.apolloProviderCtrlConnector.componentOnReady();
     const client = await apolloProviderCtrl.getClient();
     this.children = this.onReady(args => client.mutate<any>({

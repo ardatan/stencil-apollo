@@ -17,23 +17,6 @@ export class MyComponentWithCodegen {
   render() {
     return (
       <apollo-provider client={client}>
-        <AllPosts.Component
-          onReady={
-            ({ data }) => {
-              <ul>
-                {data.posts.map(
-                  post => (
-                    <li>
-                      {post.title}
-                      by
-                      {post.author.firstName}
-                      {post.author.lastName}
-                    </li>
-                  )
-                )}
-              </ul>
-            }
-          } />
       </apollo-provider>
     );
   }
