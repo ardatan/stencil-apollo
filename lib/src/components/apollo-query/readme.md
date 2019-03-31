@@ -10,10 +10,17 @@
 | Property    | Attribute   | Description | Type                                                       | Default     |
 | ----------- | ----------- | ----------- | ---------------------------------------------------------- | ----------- |
 | `client`    | --          |             | `ApolloClient<any>`                                        | `undefined` |
-| `onReady`   | --          |             | `(result: ApolloQueryResult<any>) => Element \| Element[]` | `undefined` |
 | `options`   | --          |             | `WatchQueryOptions<OperationVariables>`                    | `undefined` |
 | `query`     | `query`     |             | `any`                                                      | `undefined` |
+| `renderer`  | --          |             | `(result: ApolloQueryResult<any>) => Element \| Element[]` | `undefined` |
 | `variables` | `variables` |             | `any`                                                      | `undefined` |
+
+
+## Events
+
+| Event    | Description | Type                |
+| -------- | ----------- | ------------------- |
+| `loaded` |             | `CustomEvent<void>` |
 
 
 ----------------------------------------------

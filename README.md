@@ -53,7 +53,7 @@ Finally you can provide your `ApolloClient` instance on your root component, the
 ```
 
 ```tsx
-  <apollo-query query={ gql`query { foo }` } onReady={
+  <apollo-query query={ gql`query { foo }` } renderer={
     ({ data, loading }) => {
      if (loading) {
       return 'Loading';
@@ -61,4 +61,22 @@ Finally you can provide your `ApolloClient` instance on your root component, the
      return <p>Foo: {data.foo}</p>;
     }
   } />
+```
+
+or you can use functional components like React-Apollo
+
+```tsx
+import { Query } from 'stencil-apollo';
+
+<Query query={ gql`query { foo }` }>
+  {
+  ({ data, loading }) => {
+    if (loading) {
+    return 'Loading';
+    }
+    return <p>Foo: {data.foo}</p>;
+  }
+}
+</Query>
+
 ```

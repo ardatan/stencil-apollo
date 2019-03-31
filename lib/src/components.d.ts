@@ -12,7 +12,7 @@ import {
   DocumentNode,
 } from 'graphql';
 import {
-  OnMutationReadyFn,
+  MutationRenderer,
 } from './components/apollo-mutation/types';
 import {
   ApolloClient,
@@ -21,10 +21,10 @@ import {
   WatchQueryOptions,
 } from 'apollo-client';
 import {
-  OnQueryReadyFn,
+  QueryRenderer,
 } from './components/apollo-query/types';
 import {
-  OnSubscriptionReadyFn,
+  SubscriptionRenderer,
 } from './components/apollo-subscription/types';
 
 
@@ -33,15 +33,16 @@ export namespace Components {
   interface ApolloMutation {
     'client': ApolloClient<any>;
     'mutation': DocumentNode;
-    'onReady': OnMutationReadyFn;
     'options': MutationOptions;
+    'renderer': MutationRenderer;
     'variables': any;
   }
   interface ApolloMutationAttributes extends StencilHTMLAttributes {
     'client'?: ApolloClient<any>;
     'mutation'?: DocumentNode;
-    'onReady'?: OnMutationReadyFn;
+    'onLoaded'?: (event: CustomEvent) => void;
     'options'?: MutationOptions;
+    'renderer'?: MutationRenderer;
     'variables'?: any;
   }
 
@@ -54,30 +55,32 @@ export namespace Components {
 
   interface ApolloQuery {
     'client': ApolloClient<any>;
-    'onReady': OnQueryReadyFn<any>;
     'options': WatchQueryOptions;
     'query': DocumentNode;
+    'renderer': QueryRenderer<any>;
     'variables': any;
   }
   interface ApolloQueryAttributes extends StencilHTMLAttributes {
     'client'?: ApolloClient<any>;
-    'onReady'?: OnQueryReadyFn<any>;
+    'onLoaded'?: (event: CustomEvent) => void;
     'options'?: WatchQueryOptions;
     'query'?: DocumentNode;
+    'renderer'?: QueryRenderer<any>;
     'variables'?: any;
   }
 
   interface ApolloSubscription {
     'client': ApolloClient<any>;
-    'onReady': OnSubscriptionReadyFn<any>;
     'options': SubscriptionOptions;
+    'renderer': SubscriptionRenderer<any>;
     'subscription': DocumentNode;
     'variables': any;
   }
   interface ApolloSubscriptionAttributes extends StencilHTMLAttributes {
     'client'?: ApolloClient<any>;
-    'onReady'?: OnSubscriptionReadyFn<any>;
+    'onLoaded'?: (event: CustomEvent) => void;
     'options'?: SubscriptionOptions;
+    'renderer'?: SubscriptionRenderer<any>;
     'subscription'?: DocumentNode;
     'variables'?: any;
   }

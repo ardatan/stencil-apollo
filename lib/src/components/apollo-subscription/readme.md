@@ -10,10 +10,17 @@
 | Property       | Attribute      | Description | Type                                      | Default     |
 | -------------- | -------------- | ----------- | ----------------------------------------- | ----------- |
 | `client`       | --             |             | `ApolloClient<any>`                       | `undefined` |
-| `onReady`      | --             |             | `(result: any) => Element \| Element[]`   | `undefined` |
 | `options`      | --             |             | `SubscriptionOptions<OperationVariables>` | `undefined` |
+| `renderer`     | --             |             | `(result: any) => Element \| Element[]`   | `undefined` |
 | `subscription` | `subscription` |             | `any`                                     | `undefined` |
 | `variables`    | `variables`    |             | `any`                                     | `undefined` |
+
+
+## Events
+
+| Event    | Description | Type                |
+| -------- | ----------- | ------------------- |
+| `loaded` |             | `CustomEvent<void>` |
 
 
 ----------------------------------------------

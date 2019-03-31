@@ -41,7 +41,7 @@ export class MyComponent {
 
   renderUpvoteButton(postId){
     return (
-      <apollo-mutation mutation={UPVOTE_POST} onReady={ upvotePost => (
+      <apollo-mutation mutation={UPVOTE_POST} renderer={ upvotePost => (
         <button onClick={() => upvotePost({ variables: { postId } })}>Upvote</button>
        )} />
     )
@@ -50,7 +50,7 @@ export class MyComponent {
   render() {
     return (
       <apollo-provider client={client}>
-        <apollo-query query={ALL_POSTS_QUERY} onReady={({ data, loading }) => {
+        <apollo-query query={ALL_POSTS_QUERY} renderer={({ data, loading }) => {
             if (loading) return 'Loading...';
             return (
               <ul>

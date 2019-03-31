@@ -1,58 +1,69 @@
-import { Component, Prop, State } from "@stencil/core";
+import { Component, Prop, State, Element, Watch, Event, EventEmitter } from "@stencil/core";
 import { DocumentNode } from "graphql";
-import { OnSubscriptionReadyFn } from "./types";
+import { SubscriptionRenderer } from "./types";
 import { ApolloClient, SubscriptionOptions } from "apollo-client";
 import { ApolloProviderProviderConsumer } from "../../utils/provider";
 
 @Component({
   tag: 'apollo-subscription'
 })
-export class ApolloSubscription {
+export class ApolloSubscriptionComponent {
   @Prop() subscription: DocumentNode;
-  @Prop() onReady: OnSubscriptionReadyFn<any>;
+  @Prop() renderer: SubscriptionRenderer<any>;
   @Prop() variables: any;
   @Prop() options: SubscriptionOptions;
-  @State() children: JSX.Element | JSX.Element[] | null | undefined;
+  @State() result: any;
   @Prop() client: ApolloClient<any>;
+  @Element() el: HTMLApolloSubscriptionElement;
+  @Event() loaded: EventEmitter;
   private _subscription: ZenObservable.Subscription;
-  componentWillLoad(){
-    this.children = this.onReady({
+  componentWillLoad() {
+    this.result = {
       data: undefined,
       errors: [],
       loading: true,
       networkStatus: undefined,
       stale: undefined
-    });
+    };
     this.startSubscription();
   }
-  componentWillUpdate(){
+  @Watch('client')
+  @Watch('subscription')
+  @Watch('variables')
+  @Watch('renderer')
+  @Watch('options')
+  onPropsChange() {
     this.stopSubscription();
     this.startSubscription();
   }
-  componentDidUnload(){
+  componentDidUnload() {
     this.stopSubscription();
   }
-  startSubscription(){
-    const client = this.client;
-    this._subscription = client.subscribe({
-      query: this.subscription,
-      variables: this.variables,
-      ...this.options
-    }).subscribe(result => {
-      this.children = this.onReady(result);
-    })
+  startSubscription() {
+    if (this.client) {
+      this._subscription = this.client.subscribe({
+        query: this.subscription,
+        variables: this.variables,
+        ...this.options
+      }).subscribe(result => {
+        this.result = result;
+        this.loaded.emit(this.result);
+      })
+    } else {
+      throw new Error('You should wrap your parent component with apollo-provider custom element or ApolloProvider functional component');
+    }
   }
-  stopSubscription(){
-    if(this._subscription){
+  stopSubscription() {
+    if (this._subscription) {
       this._subscription.unsubscribe();
     }
   }
-  render(){
+  render() {
     return [
-      <slot/>,
-      this.children
+      <slot />,
+      this.renderer && this.renderer(this.result),
     ]
   }
 }
 
-ApolloProviderProviderConsumer.injectProps(ApolloSubscription, ['client']);
+ApolloProviderProviderConsumer.injectProps(ApolloSubscriptionComponent, ['client']);

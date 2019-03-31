@@ -1,6 +1,6 @@
 import { DocumentNode } from "graphql";
 import { WatchQueryOptions } from "apollo-client";
-import { OnQueryReadyFn } from "../components/apollo-query/types";
+import { QueryRenderer } from "../components/apollo-query/types";
 
 export const Query = <TData, TVariables>(
     {
@@ -11,8 +11,8 @@ export const Query = <TData, TVariables>(
         query: DocumentNode,
         variables?: TVariables,
         options?: WatchQueryOptions<TVariables>,
-        children?: OnQueryReadyFn<TData, TVariables>,
+        children?: QueryRenderer<TData, TVariables>,
     },
-    children: [OnQueryReadyFn<TData, TVariables>]
+    children: [QueryRenderer<TData, TVariables>]
 ) =>
-    <apollo-query query={query} variables={variables} options={options} onReady={children[0]} />;
+    <apollo-query query={query} variables={variables} options={options} renderer={children[0]} />;

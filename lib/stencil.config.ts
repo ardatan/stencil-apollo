@@ -1,16 +1,11 @@
 import { Config } from '@stencil/core';
 
 export const config: Config = {
+  enableCache: false,
   namespace: 'stencil-apollo',
-  bundles: [
+  bundles:[
     {
-      components: [
-        'apollo-provider',
-        'apollo-client-controller',
-        'apollo-query',
-        'apollo-mutation',
-        'apollo-subscription'
-      ]
+      components: ['apollo-provider', 'apollo-query', 'apollo-mutation', 'apollo-subscription']
     }
   ],
   outputTargets:[

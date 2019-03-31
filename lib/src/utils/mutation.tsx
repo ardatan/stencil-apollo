@@ -1,6 +1,6 @@
 import { DocumentNode } from "graphql";
 import { MutationOptions } from "apollo-client";
-import { OnMutationReadyFn } from "../components/apollo-mutation/types";
+import { MutationRenderer } from "../components/apollo-mutation/types";
 
 export const Mutation = <TData, TVariables>(
     {
@@ -9,9 +9,9 @@ export const Mutation = <TData, TVariables>(
         options
     }: {
         mutation: DocumentNode,
-        variables: TVariables,
-        options: MutationOptions<TVariables>,
-        children?: OnMutationReadyFn<TData, TVariables>
+        variables?: TVariables,
+        options?: MutationOptions<TData, TVariables>,
+        children?: MutationRenderer<TData, TVariables>
     },
-    children: [OnMutationReadyFn<TData, TVariables>]
-) => <apollo-mutation mutation={mutation} variables={variables} options={options} onReady={children[0]} />;
+    children: [MutationRenderer<TData, TVariables>]
+) => <apollo-mutation mutation={mutation} variables={variables} options={options} renderer={children[0]} />;

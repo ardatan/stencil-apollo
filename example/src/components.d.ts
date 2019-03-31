@@ -8,9 +8,19 @@
 import '@stencil/core';
 
 import 'stencil-apollo';
+import '@stencil/state-tunnel';
 
 
 export namespace Components {
+
+  interface MyFunctionalComponent {
+    'first': string;
+    'last': string;
+  }
+  interface MyFunctionalComponentAttributes extends StencilHTMLAttributes {
+    'first'?: string;
+    'last'?: string;
+  }
 
   interface MyComponent {
     'first': string;
@@ -24,13 +34,21 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'MyFunctionalComponent': Components.MyFunctionalComponent;
     'MyComponent': Components.MyComponent;
   }
 
   interface StencilIntrinsicElements {
+    'my-functional-component': Components.MyFunctionalComponentAttributes;
     'my-component': Components.MyComponentAttributes;
   }
 
+
+  interface HTMLMyFunctionalComponentElement extends Components.MyFunctionalComponent, HTMLStencilElement {}
+  var HTMLMyFunctionalComponentElement: {
+    prototype: HTMLMyFunctionalComponentElement;
+    new (): HTMLMyFunctionalComponentElement;
+  };
 
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   var HTMLMyComponentElement: {
@@ -39,10 +57,12 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'my-functional-component': HTMLMyFunctionalComponentElement
     'my-component': HTMLMyComponentElement
   }
 
   interface ElementTagNameMap {
+    'my-functional-component': HTMLMyFunctionalComponentElement;
     'my-component': HTMLMyComponentElement;
   }
 

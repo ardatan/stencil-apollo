@@ -1,31 +1,38 @@
-import { Component, Prop, State } from "@stencil/core";
+import { Component, Prop, State, Element, Watch, Event, EventEmitter } from "@stencil/core";
 import { DocumentNode } from "graphql";
-import { OnQueryReadyFn } from "./types";
-import { ApolloClient, WatchQueryOptions } from "apollo-client";
+import { QueryRenderer } from "./types";
+import { ApolloClient, WatchQueryOptions, ApolloQueryResult } from "apollo-client";
 import { ApolloProviderProviderConsumer } from "../../utils/provider";
 
 @Component({
   tag: 'apollo-query'
 })
-export class ApolloQuery {
+export class ApolloQueryComponent {
   @Prop() query: DocumentNode;
-  @Prop() onReady: OnQueryReadyFn<any>;
+  @Prop() renderer: QueryRenderer<any>;
   @Prop() variables: any;
   @Prop() options: WatchQueryOptions;
-  @State() children: JSX.Element | JSX.Element[] | null | undefined;
+  @State() result: ApolloQueryResult<any>
   @Prop() client: ApolloClient<any>;
+  @Element() el: HTMLApolloQueryElement;
+  @Event() loaded: EventEmitter;
   private _subscription: ZenObservable.Subscription;
   componentWillLoad(){
-    this.children = this.onReady({
+    this.result = {
       data: undefined,
       errors: [],
       loading: true,
       networkStatus: undefined,
       stale: undefined
-    });
+    }
     this.startSubscription();
   }
-  componentWillUpdate(){
+  @Watch('client')
+  @Watch('query')
+  @Watch('variables')
+  @Watch('renderer')
+  @Watch('options')
+  onPropsChange(){
     this.stopSubscription();
     this.startSubscription();
   }
@@ -33,13 +40,18 @@ export class ApolloQuery {
     this.stopSubscription();
   }
   startSubscription(){
-    this._subscription = this.client.watchQuery({
-      query: this.query,
-      variables: this.variables,
-      ...this.options
-    }).subscribe(result => {
-      this.children = this.onReady(result);
-    })
+    if (this.client) {
+      this._subscription = this.client.watchQuery({
+        query: this.query,
+        variables: this.variables,
+        ...this.options
+      }).subscribe(result => {
+        this.result = result;
+        this.loaded.emit(this.result);
+      })
+    } else {
+      throw new Error('You should wrap your parent component with apollo-provider custom element or ApolloProvider functional component');
+    }
   }
   stopSubscription(){
     if(this._subscription){
@@ -49,9 +61,9 @@ export class ApolloQuery {
   render(){
     return [
       <slot/>,
-      this.children
+      this.renderer && this.renderer(this.result),
     ]
   }
 }
 
-ApolloProviderProviderConsumer.injectProps(ApolloQuery, ['client']);
+ApolloProviderProviderConsumer.injectProps(ApolloQueryComponent, ['client']);
