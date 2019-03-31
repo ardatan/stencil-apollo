@@ -18,13 +18,13 @@
   },
   "dependencies": {
     "apollo-boost": "0.3.1",
-    "graphql": "14.2.0",
+    "graphql": "14.2.1",
     "graphql-tag": "2.10.1",
     "stencil-apollo": "0.0.2"
   },
   "devDependencies": {
     "@stencil/core": "0.18.1",
-    "@types/graphql": "14.0.7",
+    "@types/graphql": "14.2.0",
     "graphql-code-generator": "0.18.0",
     "graphql-codegen-add": "0.18.0",
     "graphql-codegen-typescript-client": "0.18.0",
