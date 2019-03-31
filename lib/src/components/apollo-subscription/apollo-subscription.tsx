@@ -16,16 +16,23 @@ export class ApolloSubscription {
   @Prop() client: ApolloClient<any>;
   private _subscription: ZenObservable.Subscription;
   componentWillLoad(){
-    return this.startSubscription();
+    this.children = this.onReady({
+      data: undefined,
+      errors: [],
+      loading: true,
+      networkStatus: undefined,
+      stale: undefined
+    });
+    this.startSubscription();
   }
   componentWillUpdate(){
-    return this.startSubscription();
+    this.stopSubscription();
+    this.startSubscription();
   }
   componentDidUnload(){
-    return this.stopSubscription();
-  }
-  async startSubscription(){
     this.stopSubscription();
+  }
+  startSubscription(){
     const client = this.client;
     this._subscription = client.subscribe({
       query: this.subscription,

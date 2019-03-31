@@ -16,44 +16,30 @@ export class ApolloQuery {
   @Prop() client: ApolloClient<any>;
   private _subscription: ZenObservable.Subscription;
   componentWillLoad(){
-    return this.startSubscription();
+    this.children = this.onReady({
+      data: undefined,
+      errors: [],
+      loading: true,
+      networkStatus: undefined,
+      stale: undefined
+    });
+    this.startSubscription();
   }
   componentWillUpdate(){
     this.stopSubscription();
-    return this.startSubscription();
+    this.startSubscription();
   }
   componentDidUnload(){
-    return this.stopSubscription();
+    this.stopSubscription();
   }
   startSubscription(){
-    let firstResolved = false;
-    return new Promise(async (resolve, reject) => {
-      try {
-        this.stopSubscription();
-        this._subscription = this.client.watchQuery({
-          query: this.query,
-          variables: this.variables,
-          ...this.options
-        }).subscribe(result => {
-          if (!firstResolved) {
-            firstResolved = true;
-            resolve();
-          }
-          this.children = this.onReady(result);
-        },
-        e => {
-          if (!firstResolved) {
-            firstResolved = true;
-            reject(e);
-          } else {
-            throw e;
-          }
-        })
-      } catch (e) {
-        firstResolved = true;
-        reject(e);
-      }
-    });
+    this._subscription = this.client.watchQuery({
+      query: this.query,
+      variables: this.variables,
+      ...this.options
+    }).subscribe(result => {
+      this.children = this.onReady(result);
+    })
   }
   stopSubscription(){
     if(this._subscription){
