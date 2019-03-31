@@ -1,18 +1,19 @@
 import { Component, Prop, State } from "@stencil/core";
 import { DocumentNode } from "graphql";
 import { OnSubscriptionReadyFn } from "./types";
-import { SubscriptionOptions } from "apollo-client";
+import { ApolloClient, SubscriptionOptions } from "apollo-client";
+import { ApolloProviderProviderConsumer } from "../../utils/provider";
 
 @Component({
   tag: 'apollo-subscription'
 })
-export class ApolloQuery {
+export class ApolloSubscription {
   @Prop() subscription: DocumentNode;
   @Prop() onReady: OnSubscriptionReadyFn<any>;
   @Prop() variables: any;
   @Prop() options: SubscriptionOptions;
-  @Prop({ connect: 'apollo-client-controller'}) apolloProviderCtrlConnector;
   @State() children: JSX.Element | JSX.Element[] | null | undefined;
+  @Prop() client: ApolloClient<any>;
   private _subscription: ZenObservable.Subscription;
   componentWillLoad(){
     return this.startSubscription();
@@ -25,8 +26,7 @@ export class ApolloQuery {
   }
   async startSubscription(){
     this.stopSubscription();
-    const apolloProviderCtrl: HTMLApolloClientControllerElement = await this.apolloProviderCtrlConnector.componentOnReady();
-    const client = await apolloProviderCtrl.getClient();
+    const client = this.client;
     this._subscription = client.subscribe({
       query: this.subscription,
       variables: this.variables,
@@ -47,3 +47,5 @@ export class ApolloQuery {
     ]
   }
 }
+
+ApolloProviderProviderConsumer.injectProps(ApolloSubscription, ['client']);

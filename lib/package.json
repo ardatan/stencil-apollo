@@ -4,7 +4,7 @@
   "description": "Stencil Apollo",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
-  "types": "dist/types/components.d.ts",
+  "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "private": false,
   "files": [
@@ -15,6 +15,9 @@
     "build-docs": "stencil build --docs-json",
     "test": "jest",
     "test.watch": "jest --watch"
+  },
+  "dependencies": {
+    "@stencil/state-tunnel": "0.0.8"
   },
   "peerDependencies": {
     "apollo-client": "^2.4.13",

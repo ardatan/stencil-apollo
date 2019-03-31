@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property    | Attribute   | Description | Type                                                           | Default     |
-| ----------- | ----------- | ----------- | -------------------------------------------------------------- | ----------- |
-| `mutation`  | `mutation`  |             | `any`                                                          | `undefined` |
-| `onReady`   | --          |             | `(mutationFn: MutationFn<{}, OperationVariables>) => any`      | `undefined` |
-| `options`   | --          |             | `MutationOptions<{ [key: string]: any; }, OperationVariables>` | `undefined` |
-| `variables` | `variables` |             | `any`                                                          | `undefined` |
+| Property    | Attribute   | Description | Type                                                                       | Default     |
+| ----------- | ----------- | ----------- | -------------------------------------------------------------------------- | ----------- |
+| `client`    | --          |             | `ApolloClient<any>`                                                        | `undefined` |
+| `mutation`  | `mutation`  |             | `any`                                                                      | `undefined` |
+| `onReady`   | --          |             | `(mutationFn: MutationFn<{}, OperationVariables>) => Element \| Element[]` | `undefined` |
+| `options`   | --          |             | `MutationOptions<{ [key: string]: any; }, OperationVariables>`             | `undefined` |
+| `variables` | `variables` |             | `any`                                                                      | `undefined` |
 
 
 ----------------------------------------------

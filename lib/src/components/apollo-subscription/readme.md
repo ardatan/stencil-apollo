@@ -9,7 +9,8 @@
 
 | Property       | Attribute      | Description | Type                                      | Default     |
 | -------------- | -------------- | ----------- | ----------------------------------------- | ----------- |
-| `onReady`      | --             |             | `(result: any) => any`                    | `undefined` |
+| `client`       | --             |             | `ApolloClient<any>`                       | `undefined` |
+| `onReady`      | --             |             | `(result: any) => Element \| Element[]`   | `undefined` |
 | `options`      | --             |             | `SubscriptionOptions<OperationVariables>` | `undefined` |
 | `subscription` | `subscription` |             | `any`                                     | `undefined` |
 | `variables`    | `variables`    |             | `any`                                     | `undefined` |

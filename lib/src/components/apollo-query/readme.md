@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property    | Attribute   | Description | Type                                      | Default     |
-| ----------- | ----------- | ----------- | ----------------------------------------- | ----------- |
-| `onReady`   | --          |             | `(result: ApolloQueryResult<any>) => any` | `undefined` |
-| `options`   | --          |             | `WatchQueryOptions<OperationVariables>`   | `undefined` |
-| `query`     | `query`     |             | `any`                                     | `undefined` |
-| `variables` | `variables` |             | `any`                                     | `undefined` |
+| Property    | Attribute   | Description | Type                                                       | Default     |
+| ----------- | ----------- | ----------- | ---------------------------------------------------------- | ----------- |
+| `client`    | --          |             | `ApolloClient<any>`                                        | `undefined` |
+| `onReady`   | --          |             | `(result: ApolloQueryResult<any>) => Element \| Element[]` | `undefined` |
+| `options`   | --          |             | `WatchQueryOptions<OperationVariables>`                    | `undefined` |
+| `query`     | `query`     |             | `any`                                                      | `undefined` |
+| `variables` | `variables` |             | `any`                                                      | `undefined` |
 
 
 ----------------------------------------------

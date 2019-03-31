@@ -1,7 +1,8 @@
-import { Component, Prop, State } from "@stencil/core";
+import { Component, Prop, State, Element } from "@stencil/core";
 import { DocumentNode } from "graphql";
 import { OnMutationReadyFn } from "./types";
-import { MutationOptions } from "apollo-client";
+import { ApolloClient, MutationOptions } from "apollo-client";
+import { ApolloProviderProviderConsumer } from "../../utils/provider";
 
 @Component({
   tag: 'apollo-mutation'
@@ -11,8 +12,9 @@ export class ApolloMutation {
   @Prop() onReady: OnMutationReadyFn;
   @Prop() variables: any;
   @Prop() options: MutationOptions;
-  @Prop({ connect: 'apollo-client-controller'}) apolloProviderCtrlConnector;
   @State() children: JSX.Element | JSX.Element[] | null | undefined;
+  @Prop() client: ApolloClient<any>;
+  @Element() el: HTMLApolloMutationElement;
   componentWillLoad(){
     return this.passMutation();
   }
@@ -20,9 +22,7 @@ export class ApolloMutation {
     return this.passMutation();
   }
   async passMutation(){
-    const apolloProviderCtrl: HTMLApolloClientControllerElement = await this.apolloProviderCtrlConnector.componentOnReady();
-    const client = await apolloProviderCtrl.getClient();
-    this.children = this.onReady(args => client.mutate<any>({
+    this.children = this.onReady(args => this.client.mutate<any>({
       mutation: this.mutation,
       variables: this.variables,
       ...this.options,
@@ -36,3 +36,5 @@ export class ApolloMutation {
     ]
   }
 }
+
+ApolloProviderProviderConsumer.injectProps(ApolloMutation, ['client']);
