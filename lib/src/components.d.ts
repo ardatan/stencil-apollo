@@ -15,11 +15,11 @@ import {
   MutationFn,
   MutationRenderer,
   QueryRenderer,
+  QueryResult,
   SubscriptionRenderer,
 } from './utils/types';
 import {
   ApolloClient,
-  ApolloQueryResult,
   MutationOptions,
   SubscriptionOptions,
   WatchQueryOptions,
@@ -63,8 +63,8 @@ export namespace Components {
   }
   interface ApolloQueryAttributes extends StencilHTMLAttributes {
     'client'?: ApolloClient<any>;
-    'onReady'?: (event: CustomEvent<ApolloQueryResult<any>>) => void;
-    'onResult'?: (event: CustomEvent<ApolloQueryResult<any>>) => void;
+    'onReady'?: (event: CustomEvent<QueryResult<any>>) => void;
+    'onResult'?: (event: CustomEvent<QueryResult<any>>) => void;
     'options'?: WatchQueryOptions;
     'query'?: DocumentNode;
     'renderer'?: QueryRenderer<any>;
