@@ -1,6 +1,6 @@
 import { DocumentNode } from "graphql";
 import { WatchQueryOptions } from "apollo-client";
-import { QueryRenderer } from "../components/apollo-query/types";
+import { QueryRenderer } from  "./types";
 
 export const Query = <TData, TVariables>(
     {

@@ -18,9 +18,9 @@
 
 ## Events
 
-| Event    | Description | Type                |
-| -------- | ----------- | ------------------- |
-| `loaded` |             | `CustomEvent<void>` |
+| Event   | Description | Type                                |
+| ------- | ----------- | ----------------------------------- |
+| `ready` |             | `CustomEvent<MutationFn<any, any>>` |
 
 
 ----------------------------------------------

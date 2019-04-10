@@ -1,6 +1,6 @@
 import { DocumentNode } from "graphql";
 import { MutationOptions } from "apollo-client";
-import { MutationRenderer } from "../components/apollo-mutation/types";
+import { MutationRenderer } from "./types";
 
 export const Mutation = <TData, TVariables>(
     {

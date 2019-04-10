@@ -1,6 +1,6 @@
 import { Component, Prop, State, Element, Watch, Event, EventEmitter } from "@stencil/core";
 import { DocumentNode } from "graphql";
-import { SubscriptionRenderer } from "./types";
+import { SubscriptionRenderer } from "../../utils/types";
 import { ApolloClient, SubscriptionOptions } from "apollo-client";
 import { ApolloProviderProviderConsumer } from "../../utils/provider";
 
@@ -15,7 +15,8 @@ export class ApolloSubscriptionComponent {
   @State() result: any;
   @Prop() client: ApolloClient<any>;
   @Element() el: HTMLApolloSubscriptionElement;
-  @Event() loaded: EventEmitter;
+  @Event({ eventName: 'ready' }) readyEventEmitter: EventEmitter<any>;
+  @Event({ eventName: 'result' }) resultEventEmitter: EventEmitter<any>;
   private _subscription: ZenObservable.Subscription;
   componentWillLoad() {
     this.result = {
@@ -47,8 +48,9 @@ export class ApolloSubscriptionComponent {
         ...this.options
       }).subscribe(result => {
         this.result = result;
-        this.loaded.emit(this.result);
+        this.result.emit(this.result);
       })
+      this.readyEventEmitter.emit(this.result);
     } else {
       throw new Error('You should wrap your parent component with apollo-provider custom element or ApolloProvider functional component');
     }
@@ -59,10 +61,7 @@ export class ApolloSubscriptionComponent {
     }
   }
   render() {
-    return [
-      <slot />,
-      this.renderer && this.renderer(this.result),
-    ]
+    return this.renderer && this.renderer(this.result);
   }
 }
 

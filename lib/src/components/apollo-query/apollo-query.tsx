@@ -1,7 +1,7 @@
 import { Component, Prop, State, Element, Watch, Event, EventEmitter } from "@stencil/core";
 import { DocumentNode } from "graphql";
-import { QueryRenderer } from "./types";
-import { ApolloClient, WatchQueryOptions, ApolloQueryResult } from "apollo-client";
+import { QueryResult, QueryRenderer } from "../../utils/types";
+import { ApolloClient, WatchQueryOptions } from "apollo-client";
 import { ApolloProviderProviderConsumer } from "../../utils/provider";
 
 @Component({
@@ -12,19 +12,13 @@ export class ApolloQueryComponent {
   @Prop() renderer: QueryRenderer<any>;
   @Prop() variables: any;
   @Prop() options: WatchQueryOptions;
-  @State() result: ApolloQueryResult<any>
+  @State() result: QueryResult<any>
   @Prop() client: ApolloClient<any>;
   @Element() el: HTMLApolloQueryElement;
-  @Event() loaded: EventEmitter;
+  @Event({ eventName: 'ready' }) readyEventEmitter: EventEmitter<QueryResult<any>>;
+  @Event({ eventName: 'result' }) resultEventEmitter: EventEmitter<QueryResult<any>>;
   private _subscription: ZenObservable.Subscription;
   componentWillLoad(){
-    this.result = {
-      data: undefined,
-      errors: [],
-      loading: true,
-      networkStatus: undefined,
-      stale: undefined
-    }
     this.startSubscription();
   }
   @Watch('client')
@@ -41,14 +35,23 @@ export class ApolloQueryComponent {
   }
   startSubscription(){
     if (this.client) {
-      this._subscription = this.client.watchQuery({
+      const observable = this.client.watchQuery({
         query: this.query,
         variables: this.variables,
         ...this.options
-      }).subscribe(result => {
-        this.result = result;
-        this.loaded.emit(this.result);
+      });
+      this.result = Object.assign(observable, {
+        data: undefined,
+        errors: [],
+        loading: true,
+        networkStatus: undefined,
+        stale: undefined
+      });
+      this._subscription = this.result.subscribe(result => {
+        this.result = Object.assign(this.result, result);
+        this.resultEventEmitter.emit(this.result);
       })
+      this.readyEventEmitter.emit(this.result);
     } else {
       throw new Error('You should wrap your parent component with apollo-provider custom element or ApolloProvider functional component');
     }
@@ -59,10 +62,7 @@ export class ApolloQueryComponent {
     }
   }
   render(){
-    return [
-      <slot/>,
-      this.renderer && this.renderer(this.result),
-    ]
+    return this.renderer && this.renderer(this.result);
   }
 }
 

@@ -1,6 +1,6 @@
 import { Component, Prop, State, Element, Watch, Event, EventEmitter } from "@stencil/core";
 import { DocumentNode } from "graphql";
-import { MutationRenderer, MutationFn } from "./types";
+import { MutationRenderer, MutationFn } from "../../utils/types";
 import { ApolloClient, MutationOptions } from "apollo-client";
 import { ApolloProviderProviderConsumer } from "../../utils/provider";
 
@@ -15,7 +15,7 @@ export class ApolloMutationComponent {
   @State() mutationFn: MutationFn<any, any>;
   @Prop() client: ApolloClient<any>;
   @Element() el: HTMLApolloMutationElement;
-  @Event() loaded: EventEmitter;
+  @Event({ eventName: 'ready' }) readyEventEmitter: EventEmitter<MutationFn<any, any>>;
 
   componentWillLoad(){
     this.passMutation();
@@ -37,16 +37,13 @@ export class ApolloMutationComponent {
         ...this.options,
         ...args
       });
-      this.loaded.emit(this.mutationFn);
+      this.readyEventEmitter.emit(this.mutationFn);
     } else {
       throw new Error('You should wrap your parent component with apollo-provider custom element or ApolloProvider functional component');
     }
   }
   render(){
-    return [
-      <slot/>,
-      this.renderer && this.renderer(this.mutationFn)
-    ]
+    return this.renderer && this.renderer(this.mutationFn);
   }
 }
 

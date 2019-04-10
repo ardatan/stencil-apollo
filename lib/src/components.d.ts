@@ -12,20 +12,21 @@ import {
   DocumentNode,
 } from 'graphql';
 import {
+  MutationFn,
   MutationRenderer,
-} from './components/apollo-mutation/types';
+  QueryRenderer,
+  SubscriptionRenderer,
+} from './utils/types';
 import {
   ApolloClient,
+  ApolloQueryResult,
   MutationOptions,
   SubscriptionOptions,
   WatchQueryOptions,
 } from 'apollo-client';
 import {
-  QueryRenderer,
-} from './components/apollo-query/types';
-import {
-  SubscriptionRenderer,
-} from './components/apollo-subscription/types';
+  EventEmitter,
+} from '@stencil/core';
 
 
 export namespace Components {
@@ -40,7 +41,7 @@ export namespace Components {
   interface ApolloMutationAttributes extends StencilHTMLAttributes {
     'client'?: ApolloClient<any>;
     'mutation'?: DocumentNode;
-    'onLoaded'?: (event: CustomEvent) => void;
+    'onReady'?: (event: CustomEvent<MutationFn<any, any>>) => void;
     'options'?: MutationOptions;
     'renderer'?: MutationRenderer;
     'variables'?: any;
@@ -62,7 +63,8 @@ export namespace Components {
   }
   interface ApolloQueryAttributes extends StencilHTMLAttributes {
     'client'?: ApolloClient<any>;
-    'onLoaded'?: (event: CustomEvent) => void;
+    'onReady'?: (event: CustomEvent<ApolloQueryResult<any>>) => void;
+    'onResult'?: (event: CustomEvent<ApolloQueryResult<any>>) => void;
     'options'?: WatchQueryOptions;
     'query'?: DocumentNode;
     'renderer'?: QueryRenderer<any>;
@@ -78,7 +80,8 @@ export namespace Components {
   }
   interface ApolloSubscriptionAttributes extends StencilHTMLAttributes {
     'client'?: ApolloClient<any>;
-    'onLoaded'?: (event: CustomEvent) => void;
+    'onReady'?: (event: CustomEvent<any>) => void;
+    'onResult'?: (event: CustomEvent<any>) => void;
     'options'?: SubscriptionOptions;
     'renderer'?: SubscriptionRenderer<any>;
     'subscription'?: DocumentNode;

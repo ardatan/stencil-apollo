@@ -1,6 +1,6 @@
 import { DocumentNode } from "graphql";
 import { SubscriptionOptions } from "apollo-client";
-import { SubscriptionRenderer } from "../components/apollo-subscription/types";
+import { SubscriptionRenderer } from  "./types";
 
 export const Subscription = <TData, TVariables>(
     {
