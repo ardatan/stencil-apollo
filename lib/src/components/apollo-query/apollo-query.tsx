@@ -40,15 +40,35 @@ export class ApolloQueryComponent {
         variables: this.variables,
         ...this.options
       });
-      this.result = Object.assign(observable, {
+      this.result = {
         data: undefined,
-        errors: [],
         loading: true,
+        error: undefined,
+        variables: this.variables,
         networkStatus: undefined,
-        stale: undefined
-      });
-      this._subscription = this.result.subscribe(result => {
-        this.result = Object.assign(this.result, result);
+        refetch: observable.refetch.bind(observable),
+        fetchMore: observable.fetchMore.bind(observable),
+        startPolling: observable.startPolling.bind(observable),
+        stopPolling: observable.stopPolling.bind(observable),
+        subscribeToMore: observable.subscribeToMore.bind(observable),
+        updateQuery: observable.updateQuery.bind(observable),
+        client: this.client,
+      };
+      this._subscription = observable.subscribe(result => {
+        this.result = {
+          data: result.data,
+          loading: result.loading,
+          error: result.errors[0],
+          variables: this.variables,
+          networkStatus: result.networkStatus,
+          refetch: observable.refetch.bind(observable),
+          fetchMore: observable.fetchMore.bind(observable),
+          startPolling: observable.startPolling.bind(observable),
+          stopPolling: observable.stopPolling.bind(observable),
+          subscribeToMore: observable.subscribeToMore.bind(observable),
+          updateQuery: observable.updateQuery.bind(observable),
+          client: this.client,
+        };
         this.resultEventEmitter.emit(this.result);
       })
       this.readyEventEmitter.emit(this.result);

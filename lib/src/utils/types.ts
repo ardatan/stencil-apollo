@@ -1,8 +1,25 @@
-import { ApolloQueryResult, OperationVariables, MutationOptions, ObservableQuery } from "apollo-client";
+import { ApolloClient, OperationVariables, MutationOptions, ApolloError, NetworkStatus } from "apollo-client";
 
-import { FetchResult } from "apollo-link";
+import { FetchResult, DocumentNode } from "apollo-link";
 
-export type QueryResult<TData = {}, TVariables = OperationVariables> = ApolloQueryResult<TData> & ObservableQuery<TData, TVariables>;
+export type QueryResult<TData = {}, TVariables = OperationVariables> = {
+    data: TData;
+    loading: boolean;
+    error: ApolloError;
+    variables: TVariables;
+    networkStatus: NetworkStatus;
+    refetch: (variables?: TVariables) => Promise<void>;
+    fetchMore: ({
+        query?: DocumentNode,
+        variables?: TVariables,
+        updateQuery: Function
+    });
+    startPolling: (interval: number) => void;
+    stopPolling: () => void;
+    subscribeToMore: (options: { document: DocumentNode, variables?: TVariables, updateQuery?: Function, onError?: Function}) => () => void;
+    updateQuery: (previousResult: TData, options: { variables: TVariables }) => TData;
+    client: ApolloClient<any>;
+};
 
 export type QueryRenderer<TData = {}, TVariables = OperationVariables> = (result: QueryResult<TData, TVariables>) => JSX.Element | JSX.Element[] | undefined | null;
 
