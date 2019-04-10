@@ -58,7 +58,7 @@ export class ApolloQueryComponent {
         this.result = {
           data: result.data,
           loading: result.loading,
-          error: result.errors[0],
+          error: result.errors && result.errors[0],
           variables: this.variables,
           networkStatus: result.networkStatus,
           refetch: observable.refetch.bind(observable),
