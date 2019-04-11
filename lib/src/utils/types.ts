@@ -9,11 +9,11 @@ export type QueryResult<TData = {}, TVariables = OperationVariables> = {
     variables: TVariables;
     networkStatus: NetworkStatus;
     refetch: (variables?: TVariables) => Promise<void>;
-    fetchMore: ({
+    fetchMore: (fetchMoreOptions: {
         query?: DocumentNode,
         variables?: TVariables,
         updateQuery: Function
-    });
+    }) => Promise<void>;
     startPolling: (interval: number) => void;
     stopPolling: () => void;
     subscribeToMore: (options: { document: DocumentNode, variables?: TVariables, updateQuery?: Function, onError?: Function}) => () => void;
