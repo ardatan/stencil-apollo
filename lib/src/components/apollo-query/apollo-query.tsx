@@ -1,7 +1,7 @@
 import { Component, Prop, State, Element, Watch, Event, EventEmitter } from "@stencil/core";
 import { DocumentNode } from "graphql";
 import { QueryResult, QueryRenderer } from "../../utils/types";
-import { ApolloClient, WatchQueryOptions } from "apollo-client";
+import { ApolloClient, WatchQueryOptions, NetworkStatus } from "apollo-client";
 import { ApolloProviderProviderConsumer } from "../../utils/provider";
 
 @Component({
@@ -54,13 +54,25 @@ export class ApolloQueryComponent {
         updateQuery: observable.updateQuery.bind(observable),
         client: this.client,
       };
-      this._subscription = observable.subscribe(result => {
+      this._subscription = observable.subscribe(queryResult => {
+        const {
+          data,
+          loading,
+          errors,
+          networkStatus,
+        } = queryResult;
         this.result = {
-          data: result.data,
-          loading: result.loading,
-          error: result.errors[0],
+          data,
+          loading,
+          error: {
+            graphQLErrors: errors,
+            networkError: undefined,
+            message: errors && errors[0].message,
+            name: errors && errors[0].name,
+            extraInfo: errors && errors[0],
+          },
           variables: this.variables,
-          networkStatus: result.networkStatus,
+          networkStatus,
           refetch: observable.refetch.bind(observable),
           fetchMore: observable.fetchMore.bind(observable),
           startPolling: observable.startPolling.bind(observable),
@@ -70,7 +82,22 @@ export class ApolloQueryComponent {
           client: this.client,
         };
         this.resultEventEmitter.emit(this.result);
-      })
+      }, error => {
+        this.result = {
+          data: undefined,
+          loading: false,
+          error,
+          variables: this.variables,
+          networkStatus: NetworkStatus.error,
+          refetch: observable.refetch.bind(observable),
+          fetchMore: observable.fetchMore.bind(observable),
+          startPolling: observable.startPolling.bind(observable),
+          stopPolling: observable.stopPolling.bind(observable),
+          subscribeToMore: observable.subscribeToMore.bind(observable),
+          updateQuery: observable.updateQuery.bind(observable),
+          client: this.client,
+        };
+      });
       this.readyEventEmitter.emit(this.result);
     } else {
       throw new Error('You should wrap your parent component with apollo-provider custom element or ApolloProvider functional component');
