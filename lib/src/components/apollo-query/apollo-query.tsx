@@ -97,6 +97,7 @@ export class ApolloQueryComponent {
           updateQuery: observable.updateQuery.bind(observable),
           client: this.client,
         };
+        this.resultEventEmitter.emit(this.result);
       });
       this.readyEventEmitter.emit(this.result);
     } else {
