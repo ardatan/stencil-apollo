@@ -25,11 +25,11 @@
   "devDependencies": {
     "@stencil/core": "0.18.1",
     "@types/graphql": "14.2.0",
-    "graphql-code-generator": "0.18.1",
-    "graphql-codegen-add": "0.18.1",
-    "graphql-codegen-typescript-client": "0.18.1",
-    "graphql-codegen-typescript-common": "0.18.1",
-    "graphql-codegen-typescript-stencil-apollo": "0.18.1"
+    "graphql-code-generator": "0.18.2",
+    "graphql-codegen-add": "0.18.2",
+    "graphql-codegen-typescript-client": "0.18.2",
+    "graphql-codegen-typescript-common": "0.18.2",
+    "graphql-codegen-typescript-stencil-apollo": "0.18.2"
   },
   "repository": {
     "type": "git",
