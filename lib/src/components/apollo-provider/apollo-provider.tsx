@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Prop, h } from "@stencil/core";
 import { ApolloClient } from 'apollo-client';
 import { ApolloProviderProviderConsumer } from "../../utils/provider";
 import { Declarations } from './declarations';

@@ -1,3 +1,4 @@
+import { h } from '@stencil/core';
 import { DocumentNode } from "graphql";
 import { WatchQueryOptions } from "apollo-client";
 import { QueryRenderer } from  "./types";
