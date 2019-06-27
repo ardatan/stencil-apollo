@@ -21,7 +21,7 @@
     "test.watch": "jest --watch"
   },
   "dependencies": {
-    "@stencil/state-tunnel": "one"
+    "@stencil/state-tunnel": "1.0.1"
   },
   "peerDependencies": {
     "apollo-client": "^2.4.13",
