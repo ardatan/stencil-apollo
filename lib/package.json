@@ -21,7 +21,7 @@
     "test.watch": "jest --watch"
   },
   "dependencies": {
-    "@stencil/state-tunnel": "1.0.0"
+    "@stencil/state-tunnel": "1.0.1"
   },
   "peerDependencies": {
     "apollo-client": "^2.4.13",
@@ -29,9 +29,9 @@
     "graphql-tag": "^2.10.1"
   },
   "devDependencies": {
-    "@stencil/core": "1.0.2",
-    "apollo-boost": "0.4.1",
-    "graphql": "14.3.1",
+    "@stencil/core": "1.1.2",
+    "apollo-boost": "0.4.3",
+    "graphql": "14.4.0",
     "graphql-tag": "2.10.1"
   },
   "repository": {

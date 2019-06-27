@@ -1,4 +1,4 @@
-import { h } from '@stencil/core';
+import { JSX, h } from '@stencil/core';
 import { createProviderConsumer } from '@stencil/state-tunnel';
 import { ApolloClient } from 'apollo-client';
 
