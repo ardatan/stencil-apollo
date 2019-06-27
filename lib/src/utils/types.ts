@@ -29,3 +29,5 @@ export type MutationFn<TData = {}, TVariables = OperationVariables> = (options: 
 export type MutationRenderer<TData = {}, TVariables = OperationVariables> = (mutationFn: MutationFn<TData, TVariables>) => JSX.Element | JSX.Element[] | undefined | null;
 
 export type SubscriptionRenderer<TData = {}, _TVariables = OperationVariables> = (result: TData) => JSX.Element | JSX.Element[] | undefined | null;
+
+export type ConsumerRenderer = (client: ApolloClient<any>) => JSX.Element | JSX.Element[] | undefined | null;

@@ -7,6 +7,15 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
+  ApolloClient,
+  MutationOptions,
+  SubscriptionOptions,
+  WatchQueryOptions,
+} from 'apollo-client';
+import {
+  ConsumerRenderer,
+} from './utils';
+import {
   DocumentNode,
 } from 'graphql';
 import {
@@ -16,14 +25,12 @@ import {
   QueryResult,
   SubscriptionRenderer,
 } from './utils/types';
-import {
-  ApolloClient,
-  MutationOptions,
-  SubscriptionOptions,
-  WatchQueryOptions,
-} from 'apollo-client';
 
 export namespace Components {
+  interface ApolloConsumer {
+    'client': ApolloClient<any>;
+    'renderer': ConsumerRenderer;
+  }
   interface ApolloMutation {
     'client': ApolloClient<any>;
     'mutation': DocumentNode;
@@ -53,6 +60,12 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLApolloConsumerElement extends Components.ApolloConsumer, HTMLStencilElement {}
+  var HTMLApolloConsumerElement: {
+    prototype: HTMLApolloConsumerElement;
+    new (): HTMLApolloConsumerElement;
+  };
+
   interface HTMLApolloMutationElement extends Components.ApolloMutation, HTMLStencilElement {}
   var HTMLApolloMutationElement: {
     prototype: HTMLApolloMutationElement;
@@ -77,6 +90,7 @@ declare global {
     new (): HTMLApolloSubscriptionElement;
   };
   interface HTMLElementTagNameMap {
+    'apollo-consumer': HTMLApolloConsumerElement;
     'apollo-mutation': HTMLApolloMutationElement;
     'apollo-provider': HTMLApolloProviderElement;
     'apollo-query': HTMLApolloQueryElement;
@@ -85,6 +99,10 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface ApolloConsumer extends JSXBase.HTMLAttributes<HTMLApolloConsumerElement> {
+    'client'?: ApolloClient<any>;
+    'renderer'?: ConsumerRenderer;
+  }
   interface ApolloMutation extends JSXBase.HTMLAttributes<HTMLApolloMutationElement> {
     'client'?: ApolloClient<any>;
     'mutation'?: DocumentNode;
@@ -116,6 +134,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'apollo-consumer': ApolloConsumer;
     'apollo-mutation': ApolloMutation;
     'apollo-provider': ApolloProvider;
     'apollo-query': ApolloQuery;
