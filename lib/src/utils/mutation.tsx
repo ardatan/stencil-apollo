@@ -1,3 +1,4 @@
+import { h } from '@stencil/core';
 import { DocumentNode } from "graphql";
 import { MutationOptions } from "apollo-client";
 import { MutationRenderer } from "./types";
