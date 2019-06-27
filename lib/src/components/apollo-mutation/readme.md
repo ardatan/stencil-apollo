@@ -18,10 +18,23 @@
 
 ## Events
 
-| Event   | Description | Type                                |
-| ------- | ----------- | ----------------------------------- |
-| `ready` |             | `CustomEvent<MutationFn<any, any>>` |
+| Event   | Description | Type                                                                         |
+| ------- | ----------- | ---------------------------------------------------------------------------- |
+| `ready` |             | `CustomEvent<(options: Partial<MutationOptions<any, any>>) => Promise<any>>` |
 
+
+## Dependencies
+
+### Depends on
+
+- context-consumer
+
+### Graph
+```mermaid
+graph TD;
+  apollo-mutation --> context-consumer
+  style apollo-mutation fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

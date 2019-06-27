@@ -1,6 +1,6 @@
-import { Component, Prop } from "@stencil/core";
+import { h, Component, Prop } from "@stencil/core";
 import { ApolloClient } from 'apollo-client';
-import { ApolloProviderProviderConsumer } from "../../utils/provider";
+import { ApolloProviderConsumer } from "../../utils/apollo-client-state";
 import { Declarations } from './declarations';
 
 @Component({
@@ -11,9 +11,9 @@ export class ApolloProviderComponent {
   declarations = Declarations;
   render(){
     return (
-      <ApolloProviderProviderConsumer.Provider state={{ client: this.client }}>
+      <ApolloProviderConsumer.Provider state={{ client: this.client }}>
         <slot />
-      </ApolloProviderProviderConsumer.Provider>
+      </ApolloProviderConsumer.Provider>
     )
   }
 }

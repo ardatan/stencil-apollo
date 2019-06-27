@@ -1,4 +1,4 @@
-declare global {
+declare module "@stencil/core" {
   export namespace JSX {
     interface ElementChildrenAttribute {
       children: {};

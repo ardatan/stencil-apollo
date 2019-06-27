@@ -24,6 +24,19 @@
 | `result` |             | `CustomEvent<any>` |
 
 
+## Dependencies
+
+### Depends on
+
+- context-consumer
+
+### Graph
+```mermaid
+graph TD;
+  apollo-subscription --> context-consumer
+  style apollo-subscription fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

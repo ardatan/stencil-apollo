@@ -1,12 +1,12 @@
 {
   "name": "stencil-apollo",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Stencil Apollo",
   "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "es2015": "dist/esm/es2017/index.js",
-  "es2017": "dist/esm/es2017/index.js",
-  "jsnext:main": "dist/esm/es2017/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "jsnext:main": "dist/esm/index.mjs",
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "webComponents": "dist/web-components.json",
@@ -30,8 +30,8 @@
   },
   "devDependencies": {
     "@stencil/core": "1.1.2",
-    "apollo-boost": "0.3.1",
-    "graphql": "14.3.0",
+    "apollo-boost": "0.4.3",
+    "graphql": "14.4.0",
     "graphql-tag": "2.10.1"
   },
   "repository": {

@@ -20,7 +20,7 @@ export class ApolloMutationComponent {
   componentWillLoad(){
     this.passMutation();
   }
-  
+
   @Watch('client')
   @Watch('mutation')
   @Watch('variables')
