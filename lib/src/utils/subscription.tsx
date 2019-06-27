@@ -1,3 +1,4 @@
+import { h } from '@stencil/core';
 import { DocumentNode } from "graphql";
 import { SubscriptionOptions } from "apollo-client";
 import { SubscriptionRenderer } from  "./types";

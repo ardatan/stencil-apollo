@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Stencil Apollo",
   "main": "dist/index.js",
-  "module": "dist/esm/index.js",
+  "module": "dist/index.mjs",
   "es2015": "dist/esm/es2017/index.js",
   "es2017": "dist/esm/es2017/index.js",
   "jsnext:main": "dist/esm/es2017/index.js",
@@ -21,7 +21,7 @@
     "test.watch": "jest --watch"
   },
   "dependencies": {
-    "@stencil/state-tunnel": "0.0.9-5"
+    "@stencil/state-tunnel": "1.0.1"
   },
   "peerDependencies": {
     "apollo-client": "^2.4.13",

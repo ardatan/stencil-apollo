@@ -1,3 +1,5 @@
+import { JSX } from '@stencil/core';
+
 import { ApolloClient, OperationVariables, MutationOptions, ApolloError, NetworkStatus } from "apollo-client";
 
 import { FetchResult, DocumentNode } from "apollo-link";
