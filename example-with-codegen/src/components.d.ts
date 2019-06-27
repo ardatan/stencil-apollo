@@ -5,56 +5,26 @@
  */
 
 
-import '@stencil/core';
-
-import 'stencil-apollo';
-import '@stencil/state-tunnel';
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-
   interface ApolloAllPosts {
     'renderer': import('stencil-apollo').QueryRenderer<
     AllPostsQuery,
     AllPostsQueryVariables
     >;
   }
-  interface ApolloAllPostsAttributes extends StencilHTMLAttributes {
-    'renderer'?: import('stencil-apollo').QueryRenderer<
-    AllPostsQuery,
-    AllPostsQueryVariables
-    >;
+  interface ApolloUpvotePost {
+    'renderer': import('stencil-apollo').MutationRenderer<UpvotePostMutation, UpvotePostMutationVariables>;
   }
-
   interface MyComponentWithCodegen {
     'first': string;
     'last': string;
   }
-  interface MyComponentWithCodegenAttributes extends StencilHTMLAttributes {
-    'first'?: string;
-    'last'?: string;
-  }
-
-  interface ApolloUpvotePost {
-    'renderer': import('stencil-apollo').MutationRenderer<UpvotePostMutation, UpvotePostMutationVariables>;
-  }
-  interface ApolloUpvotePostAttributes extends StencilHTMLAttributes {
-    'renderer'?: import('stencil-apollo').MutationRenderer<UpvotePostMutation, UpvotePostMutationVariables>;
-  }
 }
 
 declare global {
-  interface StencilElementInterfaces {
-    'ApolloAllPosts': Components.ApolloAllPosts;
-    'MyComponentWithCodegen': Components.MyComponentWithCodegen;
-    'ApolloUpvotePost': Components.ApolloUpvotePost;
-  }
-
-  interface StencilIntrinsicElements {
-    'apollo-all-posts': Components.ApolloAllPostsAttributes;
-    'my-component-with-codegen': Components.MyComponentWithCodegenAttributes;
-    'apollo-upvote-post': Components.ApolloUpvotePostAttributes;
-  }
 
 
   interface HTMLApolloAllPostsElement extends Components.ApolloAllPosts, HTMLStencilElement {}
@@ -63,37 +33,53 @@ declare global {
     new (): HTMLApolloAllPostsElement;
   };
 
-  interface HTMLMyComponentWithCodegenElement extends Components.MyComponentWithCodegen, HTMLStencilElement {}
-  var HTMLMyComponentWithCodegenElement: {
-    prototype: HTMLMyComponentWithCodegenElement;
-    new (): HTMLMyComponentWithCodegenElement;
-  };
-
   interface HTMLApolloUpvotePostElement extends Components.ApolloUpvotePost, HTMLStencilElement {}
   var HTMLApolloUpvotePostElement: {
     prototype: HTMLApolloUpvotePostElement;
     new (): HTMLApolloUpvotePostElement;
   };
 
+  interface HTMLMyComponentWithCodegenElement extends Components.MyComponentWithCodegen, HTMLStencilElement {}
+  var HTMLMyComponentWithCodegenElement: {
+    prototype: HTMLMyComponentWithCodegenElement;
+    new (): HTMLMyComponentWithCodegenElement;
+  };
   interface HTMLElementTagNameMap {
-    'apollo-all-posts': HTMLApolloAllPostsElement
-    'my-component-with-codegen': HTMLMyComponentWithCodegenElement
-    'apollo-upvote-post': HTMLApolloUpvotePostElement
-  }
-
-  interface ElementTagNameMap {
     'apollo-all-posts': HTMLApolloAllPostsElement;
-    'my-component-with-codegen': HTMLMyComponentWithCodegenElement;
     'apollo-upvote-post': HTMLApolloUpvotePostElement;
+    'my-component-with-codegen': HTMLMyComponentWithCodegenElement;
   }
-
-
-  export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
-    }
-  }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
+
+declare namespace LocalJSX {
+  interface ApolloAllPosts extends JSXBase.HTMLAttributes<HTMLApolloAllPostsElement> {
+    'renderer'?: import('stencil-apollo').QueryRenderer<
+    AllPostsQuery,
+    AllPostsQueryVariables
+    >;
+  }
+  interface ApolloUpvotePost extends JSXBase.HTMLAttributes<HTMLApolloUpvotePostElement> {
+    'renderer'?: import('stencil-apollo').MutationRenderer<UpvotePostMutation, UpvotePostMutationVariables>;
+  }
+  interface MyComponentWithCodegen extends JSXBase.HTMLAttributes<HTMLMyComponentWithCodegenElement> {
+    'first'?: string;
+    'last'?: string;
+  }
+
+  interface IntrinsicElements {
+    'apollo-all-posts': ApolloAllPosts;
+    'apollo-upvote-post': ApolloUpvotePost;
+    'my-component-with-codegen': MyComponentWithCodegen;
+  }
+}
+
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
+

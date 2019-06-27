@@ -1,7 +1,7 @@
 import * as Types from '../../types';
 
 import gql from 'graphql-tag';
-import { Component, Prop } from '@stencil/core';
+import { h, Component, Prop } from '@stencil/core';
 declare global {
   type UpvotePostMutationVariables = {
     postId: Types.Scalars['Int']

@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { h, Component, Prop } from '@stencil/core';
 import ApolloClient from 'apollo-boost';
 
 const client = new ApolloClient({
@@ -13,7 +13,7 @@ export class MyComponentWithCodegen {
   @Prop() first: string;
   @Prop() last: string;
 
-  renderUpvoteButton(postId) {
+  renderUpvoteButton(postId: number) {
     return (
       <apollo-upvote-post
         renderer={upvotePost => <button onClick={() => upvotePost({ variables: { postId } })}>Upvote</button>}
