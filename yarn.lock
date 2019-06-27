@@ -2,7 +2,3 @@
 # yarn lockfile v1
 
 
-"@stencil/state-tunnel@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@stencil/state-tunnel/-/state-tunnel-0.0.8.tgz#c7425719e622e8ab5009f89edd6478dc69719c38"
-  integrity sha512-fpFU91hgEirWyzMD7hsTWkIK8li4VQgx5G+dZr2Iv/AU2ofF6AiAxqP2N5SGyszleJCn9UcgWKS31/+efaBxFw==

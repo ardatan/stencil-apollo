@@ -1,6 +1,5 @@
 import { Component, Prop } from '@stencil/core';
 import ApolloClient from 'apollo-boost';
-import { UpvotePost, AllPosts } from '../../generated-models';
 
 const client = new ApolloClient({
   uri: 'https://graphql-voter-app.herokuapp.com/'
@@ -16,9 +15,8 @@ export class MyComponentWithCodegen {
 
   renderUpvoteButton(postId) {
     return (
-      <UpvotePost.Component
-        variables={{ postId }}
-        onReady={upvotePost => <button onClick={() => upvotePost({})}>Upvote</button>}
+      <apollo-upvote-post
+        renderer={upvotePost => <button onClick={() => upvotePost({ variables: { postId } })}>Upvote</button>}
       />
     );
   }
@@ -26,8 +24,8 @@ export class MyComponentWithCodegen {
   render() {
     return (
       <apollo-provider client={client}>
-        <AllPosts.Component
-          onReady={({ data, loading }) => {
+        <apollo-all-posts
+          renderer={({ data, loading }) => {
             if (loading) {
               return 'Loading...';
             }
@@ -41,8 +39,7 @@ export class MyComponentWithCodegen {
                 ))}
               </ul>
             );
-          }}
-        />
+          }}/>
       </apollo-provider>
     );
   }

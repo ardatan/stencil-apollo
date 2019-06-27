@@ -1,15 +1,6 @@
-import { createProviderConsumer } from '@stencil/state-tunnel';
-import { ApolloClient } from 'apollo-client';
-
-export interface ApolloProviderState<TCacheShape> {
-    client: ApolloClient<TCacheShape>;
-    children ?: any;
-}
-
-export const ApolloProviderProviderConsumer = createProviderConsumer<ApolloProviderState<any>>({
-    client: undefined,
-    children: undefined,
-}, (subscribe, child) => <context-consumer subscribe={subscribe} renderer={child}/>); 
+import { h } from '@stencil/core';
+import { ApolloClient } from "apollo-client";
+import { ApolloProviderConsumer } from "./apollo-client-state";
 
 export function ApolloProvider<TCacheShape>({ client }: { client: ApolloClient<TCacheShape>, children?: JSX.Element | JSX.Element[]}, children: JSX.Element[]){
     return (
@@ -17,4 +8,14 @@ export function ApolloProvider<TCacheShape>({ client }: { client: ApolloClient<T
          {children}
         </apollo-provider>
     );
+}
+
+export function ApolloConsumer<TCacheShape>(_props: { children: ((client: ApolloClient<TCacheShape>) => JSX.Element | JSX.Element[]) }, children: ((client: ApolloClient<TCacheShape>) => JSX.Element | JSX.Element[])){
+    return (
+        <ApolloProviderConsumer.Consumer>
+            {
+                ({ client }) => children[0](client)
+            }
+        </ApolloProviderConsumer.Consumer>
+    )
 }

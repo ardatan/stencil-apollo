@@ -2,7 +2,7 @@ import { Component, Prop, State, Element, Watch, Event, EventEmitter } from "@st
 import { DocumentNode } from "graphql";
 import { MutationRenderer, MutationFn } from "../../utils/types";
 import { ApolloClient, MutationOptions } from "apollo-client";
-import { ApolloProviderProviderConsumer } from "../../utils/provider";
+import { ApolloProviderConsumer } from "../../utils/apollo-client-state";
 
 @Component({
   tag: 'apollo-mutation'
@@ -47,4 +47,4 @@ export class ApolloMutationComponent {
   }
 }
 
-ApolloProviderProviderConsumer.injectProps(ApolloMutationComponent, ['client']);
+ApolloProviderConsumer.injectProps(ApolloMutationComponent, ['client']);

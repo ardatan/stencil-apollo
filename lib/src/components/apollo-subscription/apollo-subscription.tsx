@@ -2,7 +2,7 @@ import { Component, Prop, State, Element, Watch, Event, EventEmitter } from "@st
 import { DocumentNode } from "graphql";
 import { SubscriptionRenderer } from "../../utils/types";
 import { ApolloClient, SubscriptionOptions } from "apollo-client";
-import { ApolloProviderProviderConsumer } from "../../utils/provider";
+import { ApolloProviderConsumer } from "../../utils/apollo-client-state";
 
 @Component({
   tag: 'apollo-subscription'
@@ -65,4 +65,4 @@ export class ApolloSubscriptionComponent {
   }
 }
 
-ApolloProviderProviderConsumer.injectProps(ApolloSubscriptionComponent, ['client']);
+ApolloProviderConsumer.injectProps(ApolloSubscriptionComponent, ['client']);
