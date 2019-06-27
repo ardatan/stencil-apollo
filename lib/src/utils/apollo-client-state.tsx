@@ -4,10 +4,10 @@ import { createProviderConsumer } from "@stencil/state-tunnel";
 
 export interface ApolloClientState<TCacheShape> {
     client: ApolloClient<TCacheShape>;
-    children ?: any;
+    inlist ?: any;
 }
 
 export const ApolloProviderConsumer = createProviderConsumer<ApolloClientState<any>>({
     client: undefined,
-    children: undefined,
+    inlist: undefined,
 }, (subscribe, child) => <context-consumer subscribe={subscribe} renderer={child}/>); 

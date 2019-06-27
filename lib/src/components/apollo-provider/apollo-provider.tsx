@@ -3,6 +3,7 @@ import { ApolloClient } from 'apollo-client';
 import { ApolloProviderConsumer } from "../../utils/apollo-client-state";
 import { Declarations } from './declarations';
 
+const Provider: any = ApolloProviderConsumer.Provider;
 @Component({
   tag: 'apollo-provider'
 })
@@ -11,9 +12,9 @@ export class ApolloProviderComponent {
   declarations = Declarations;
   render(){
     return (
-      <ApolloProviderConsumer.Provider state={{ client: this.client }}>
+      <Provider state={{ client: this.client }}>
         <slot />
-      </ApolloProviderConsumer.Provider>
+      </Provider>
     )
   }
 }

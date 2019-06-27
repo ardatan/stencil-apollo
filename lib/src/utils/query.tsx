@@ -12,7 +12,7 @@ export const Query = <TData, TVariables>(
         query: DocumentNode,
         variables?: TVariables,
         options?: WatchQueryOptions<TVariables>,
-        children?: QueryRenderer<TData, TVariables>,
+        inlist?: QueryRenderer<TData, TVariables>,
     },
     children: [QueryRenderer<TData, TVariables>]
 ) =>

@@ -12,7 +12,7 @@ export const Subscription = <TData, TVariables>(
         subscription: DocumentNode,
         variables?: TVariables,
         options?: SubscriptionOptions<TVariables>,
-        children?: SubscriptionRenderer<TData, TVariables>,
+        inlist?: SubscriptionRenderer<TData, TVariables>,
     },
     children: [SubscriptionRenderer<TData, TVariables>]
 ) =>

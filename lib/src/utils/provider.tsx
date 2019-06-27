@@ -2,7 +2,7 @@ import { h, JSX } from '@stencil/core';
 import { ApolloClient } from "apollo-client";
 import { ApolloProviderConsumer } from "./apollo-client-state";
 
-export function ApolloProvider<TCacheShape>({ client }: { client: ApolloClient<TCacheShape>, children?: JSX.Element | JSX.Element[]}, children: JSX.Element[]){
+export function ApolloProvider<TCacheShape>({ client }: { client: ApolloClient<TCacheShape>, inlist?: JSX.Element | JSX.Element[]}, children: JSX.Element[]){
     return (
         <apollo-provider client={client}>
          {children}
@@ -10,7 +10,7 @@ export function ApolloProvider<TCacheShape>({ client }: { client: ApolloClient<T
     );
 }
 
-export function ApolloConsumer<TCacheShape>(_props: { children: ((client: ApolloClient<TCacheShape>) => JSX.Element | JSX.Element[]) }, children: ((client: ApolloClient<TCacheShape>) => JSX.Element | JSX.Element[])){
+export function ApolloConsumer<TCacheShape>(_props: { inlist: ((client: ApolloClient<TCacheShape>) => JSX.Element | JSX.Element[]) }, children: ((client: ApolloClient<TCacheShape>) => JSX.Element | JSX.Element[])){
     return (
         <ApolloProviderConsumer.Consumer>
             {

@@ -12,7 +12,7 @@ export const Mutation = <TData, TVariables>(
         mutation: DocumentNode,
         variables?: TVariables,
         options?: MutationOptions<TData, TVariables>,
-        children?: MutationRenderer<TData, TVariables>
+        inlist?: MutationRenderer<TData, TVariables>
     },
     children: [MutationRenderer<TData, TVariables>]
 ) => <apollo-mutation mutation={mutation} variables={variables} options={options} renderer={children[0]} />;
