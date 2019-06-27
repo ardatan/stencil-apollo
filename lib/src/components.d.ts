@@ -5,9 +5,7 @@
  */
 
 
-import '@stencil/core';
-
-import '@stencil/state-tunnel';
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   DocumentNode,
 } from 'graphql';
@@ -24,13 +22,8 @@ import {
   SubscriptionOptions,
   WatchQueryOptions,
 } from 'apollo-client';
-import {
-  EventEmitter,
-} from '@stencil/core';
-
 
 export namespace Components {
-
   interface ApolloMutation {
     'client': ApolloClient<any>;
     'mutation': DocumentNode;
@@ -38,22 +31,9 @@ export namespace Components {
     'renderer': MutationRenderer;
     'variables': any;
   }
-  interface ApolloMutationAttributes extends StencilHTMLAttributes {
-    'client'?: ApolloClient<any>;
-    'mutation'?: DocumentNode;
-    'onReady'?: (event: CustomEvent<MutationFn<any, any>>) => void;
-    'options'?: MutationOptions;
-    'renderer'?: MutationRenderer;
-    'variables'?: any;
-  }
-
   interface ApolloProvider {
     'client': ApolloClient<any>;
   }
-  interface ApolloProviderAttributes extends StencilHTMLAttributes {
-    'client'?: ApolloClient<any>;
-  }
-
   interface ApolloQuery {
     'client': ApolloClient<any>;
     'options': WatchQueryOptions;
@@ -61,16 +41,6 @@ export namespace Components {
     'renderer': QueryRenderer<any>;
     'variables': any;
   }
-  interface ApolloQueryAttributes extends StencilHTMLAttributes {
-    'client'?: ApolloClient<any>;
-    'onReady'?: (event: CustomEvent<QueryResult<any>>) => void;
-    'onResult'?: (event: CustomEvent<QueryResult<any>>) => void;
-    'options'?: WatchQueryOptions;
-    'query'?: DocumentNode;
-    'renderer'?: QueryRenderer<any>;
-    'variables'?: any;
-  }
-
   interface ApolloSubscription {
     'client': ApolloClient<any>;
     'options': SubscriptionOptions;
@@ -78,31 +48,9 @@ export namespace Components {
     'subscription': DocumentNode;
     'variables': any;
   }
-  interface ApolloSubscriptionAttributes extends StencilHTMLAttributes {
-    'client'?: ApolloClient<any>;
-    'onReady'?: (event: CustomEvent<any>) => void;
-    'onResult'?: (event: CustomEvent<any>) => void;
-    'options'?: SubscriptionOptions;
-    'renderer'?: SubscriptionRenderer<any>;
-    'subscription'?: DocumentNode;
-    'variables'?: any;
-  }
 }
 
 declare global {
-  interface StencilElementInterfaces {
-    'ApolloMutation': Components.ApolloMutation;
-    'ApolloProvider': Components.ApolloProvider;
-    'ApolloQuery': Components.ApolloQuery;
-    'ApolloSubscription': Components.ApolloSubscription;
-  }
-
-  interface StencilIntrinsicElements {
-    'apollo-mutation': Components.ApolloMutationAttributes;
-    'apollo-provider': Components.ApolloProviderAttributes;
-    'apollo-query': Components.ApolloQueryAttributes;
-    'apollo-subscription': Components.ApolloSubscriptionAttributes;
-  }
 
 
   interface HTMLApolloMutationElement extends Components.ApolloMutation, HTMLStencilElement {}
@@ -128,28 +76,60 @@ declare global {
     prototype: HTMLApolloSubscriptionElement;
     new (): HTMLApolloSubscriptionElement;
   };
-
   interface HTMLElementTagNameMap {
-    'apollo-mutation': HTMLApolloMutationElement
-    'apollo-provider': HTMLApolloProviderElement
-    'apollo-query': HTMLApolloQueryElement
-    'apollo-subscription': HTMLApolloSubscriptionElement
-  }
-
-  interface ElementTagNameMap {
     'apollo-mutation': HTMLApolloMutationElement;
     'apollo-provider': HTMLApolloProviderElement;
     'apollo-query': HTMLApolloQueryElement;
     'apollo-subscription': HTMLApolloSubscriptionElement;
   }
-
-
-  export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
-    }
-  }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
+
+declare namespace LocalJSX {
+  interface ApolloMutation extends JSXBase.HTMLAttributes<HTMLApolloMutationElement> {
+    'client'?: ApolloClient<any>;
+    'mutation'?: DocumentNode;
+    'onReady'?: (event: CustomEvent<MutationFn<any, any>>) => void;
+    'options'?: MutationOptions;
+    'renderer'?: MutationRenderer;
+    'variables'?: any;
+  }
+  interface ApolloProvider extends JSXBase.HTMLAttributes<HTMLApolloProviderElement> {
+    'client'?: ApolloClient<any>;
+  }
+  interface ApolloQuery extends JSXBase.HTMLAttributes<HTMLApolloQueryElement> {
+    'client'?: ApolloClient<any>;
+    'onReady'?: (event: CustomEvent<QueryResult<any>>) => void;
+    'onResult'?: (event: CustomEvent<QueryResult<any>>) => void;
+    'options'?: WatchQueryOptions;
+    'query'?: DocumentNode;
+    'renderer'?: QueryRenderer<any>;
+    'variables'?: any;
+  }
+  interface ApolloSubscription extends JSXBase.HTMLAttributes<HTMLApolloSubscriptionElement> {
+    'client'?: ApolloClient<any>;
+    'onReady'?: (event: CustomEvent<any>) => void;
+    'onResult'?: (event: CustomEvent<any>) => void;
+    'options'?: SubscriptionOptions;
+    'renderer'?: SubscriptionRenderer<any>;
+    'subscription'?: DocumentNode;
+    'variables'?: any;
+  }
+
+  interface IntrinsicElements {
+    'apollo-mutation': ApolloMutation;
+    'apollo-provider': ApolloProvider;
+    'apollo-query': ApolloQuery;
+    'apollo-subscription': ApolloSubscription;
+  }
+}
+
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
+

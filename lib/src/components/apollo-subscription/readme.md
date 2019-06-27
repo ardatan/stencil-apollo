@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property       | Attribute      | Description | Type                                      | Default     |
-| -------------- | -------------- | ----------- | ----------------------------------------- | ----------- |
-| `client`       | --             |             | `ApolloClient<any>`                       | `undefined` |
-| `options`      | --             |             | `SubscriptionOptions<OperationVariables>` | `undefined` |
-| `renderer`     | --             |             | `(result: any) => Element \| Element[]`   | `undefined` |
-| `subscription` | `subscription` |             | `any`                                     | `undefined` |
-| `variables`    | `variables`    |             | `any`                                     | `undefined` |
+| Property       | Attribute   | Description | Type                                      | Default     |
+| -------------- | ----------- | ----------- | ----------------------------------------- | ----------- |
+| `client`       | --          |             | `ApolloClient<any>`                       | `undefined` |
+| `options`      | --          |             | `SubscriptionOptions<OperationVariables>` | `undefined` |
+| `renderer`     | --          |             | `(result: any) => Element \| Element[]`   | `undefined` |
+| `subscription` | --          |             | `DocumentNode`                            | `undefined` |
+| `variables`    | `variables` |             | `any`                                     | `undefined` |
 
 
 ## Events
@@ -23,6 +23,23 @@
 | `ready`  |             | `CustomEvent<any>` |
 | `result` |             | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Depends on
+
+- context-consumer
+- [apollo-provider](../apollo-provider)
+
+### Graph
+```mermaid
+graph TD;
+  apollo-subscription --> context-consumer
+  apollo-subscription --> apollo-provider
+  apollo-provider --> context-consumer
+  apollo-provider --> apollo-provider
+  style apollo-subscription fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
