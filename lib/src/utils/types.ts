@@ -1,7 +1,6 @@
 import { ApolloClient, OperationVariables, MutationOptions, ApolloError, NetworkStatus } from "apollo-client";
 
 import { FetchResult, DocumentNode } from "apollo-link";
-import { JSX } from "@stencil/core";
 
 export type QueryResult<TData = {}, TVariables = OperationVariables> = {
     data: TData;
@@ -22,12 +21,12 @@ export type QueryResult<TData = {}, TVariables = OperationVariables> = {
     client: ApolloClient<any>;
 };
 
-export type QueryRenderer<TData = {}, TVariables = OperationVariables> = (result: QueryResult<TData, TVariables>) => JSX.Element | JSX.Element[] | undefined | null;
+export type QueryRenderer<TData = {}, TVariables = OperationVariables> = (result: QueryResult<TData, TVariables>) => Element | Element[] | undefined | null;
 
 export type MutationFn<TData = {}, TVariables = OperationVariables> = (options: Partial<MutationOptions<TData, TVariables>>) => Promise<FetchResult<TData>>
 
-export type MutationRenderer<TData = {}, TVariables = OperationVariables> = (mutationFn: MutationFn<TData, TVariables>) => JSX.Element | JSX.Element[] | undefined | null;
+export type MutationRenderer<TData = {}, TVariables = OperationVariables> = (mutationFn: MutationFn<TData, TVariables>) => Element | Element[] | undefined | null;
 
-export type SubscriptionRenderer<TData = {}, _TVariables = OperationVariables> = (result: TData) => JSX.Element | JSX.Element[] | undefined | null;
+export type SubscriptionRenderer<TData = {}, _TVariables = OperationVariables> = (result: TData) => Element | Element[] | undefined | null;
 
-export type ConsumerRenderer = (client: ApolloClient<any>) => JSX.Element | JSX.Element[] | undefined | null;
+export type ConsumerRenderer = (client: ApolloClient<any>) => Element | Element[] | undefined | null;
