@@ -29,7 +29,7 @@
     "@graphql-codegen/add": "1.3.2",
     "@graphql-codegen/near-operation-file-preset": "1.3.2",
     "@graphql-codegen/typescript": "1.3.2",
-    "@graphql-codegen/typescript-operations": "1.3.2",
+    "@graphql-codegen/typescript-operations": "1.3.2-alpha-82bb831a.0",
     "@graphql-codegen/typescript-stencil-apollo": "1.3.2"
   },
   "repository": {
