@@ -11,9 +11,12 @@ generates:
        presetConfig:
             baseTypesPath: "../types"
             extension: ".tsx"
+            globalNamespaceForFragments: true
        plugins:
             - typescript-operations
             - typescript-stencil-apollo
        config:
         componentType: class
+        globalNamespace: true
+        noGraphQLTag: true
         

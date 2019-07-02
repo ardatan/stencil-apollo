@@ -6,14 +6,18 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  AllPostsQuery,
+  AllPostsQueryVariables,
+} from './components/all-posts/all-posts';
+import {
+  UpvotePostMutation,
+  UpvotePostMutationVariables,
+} from './components/upvote-post/upvote-post';
 
 export namespace Components {
   interface ApolloAllPosts {
-    'renderer': import('stencil-apollo').QueryRenderer<
-    AllPostsQuery,
-    AllPostsQueryVariables
-    >;
+    'renderer': import('stencil-apollo').QueryRenderer<AllPostsQuery, AllPostsQueryVariables>;
   }
   interface ApolloUpvotePost {
     'renderer': import('stencil-apollo').MutationRenderer<UpvotePostMutation, UpvotePostMutationVariables>;
@@ -53,10 +57,7 @@ declare global {
 
 declare namespace LocalJSX {
   interface ApolloAllPosts extends JSXBase.HTMLAttributes<HTMLApolloAllPostsElement> {
-    'renderer'?: import('stencil-apollo').QueryRenderer<
-    AllPostsQuery,
-    AllPostsQueryVariables
-    >;
+    'renderer'?: import('stencil-apollo').QueryRenderer<AllPostsQuery, AllPostsQueryVariables>;
   }
   interface ApolloUpvotePost extends JSXBase.HTMLAttributes<HTMLApolloUpvotePostElement> {
     'renderer'?: import('stencil-apollo').MutationRenderer<UpvotePostMutation, UpvotePostMutationVariables>;
