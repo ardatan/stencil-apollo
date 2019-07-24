@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@stencil/core": "1.1.7",
-    "@types/graphql": "14.2.2"
+    "@types/graphql": "14.2.3"
   },
   "repository": {
     "type": "git",

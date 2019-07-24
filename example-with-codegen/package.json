@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@stencil/core": "1.1.7",
-    "@types/graphql": "14.2.2",
+    "@types/graphql": "14.2.3",
     "@graphql-codegen/cli": "1.4.0",
     "@graphql-codegen/add": "1.4.0",
     "@graphql-codegen/near-operation-file-preset": "1.4.0",
