@@ -25,12 +25,12 @@
   "devDependencies": {
     "@stencil/core": "1.2.1",
     "@types/graphql": "14.2.3",
-    "@graphql-codegen/cli": "1.4.0",
-    "@graphql-codegen/add": "1.4.0",
-    "@graphql-codegen/near-operation-file-preset": "1.4.0",
-    "@graphql-codegen/typescript": "1.4.0",
-    "@graphql-codegen/typescript-operations": "1.4.0",
-    "@graphql-codegen/typescript-stencil-apollo": "1.4.0"
+    "@graphql-codegen/cli": "1.5.0",
+    "@graphql-codegen/add": "1.5.0",
+    "@graphql-codegen/near-operation-file-preset": "1.5.0",
+    "@graphql-codegen/typescript": "1.5.0",
+    "@graphql-codegen/typescript-operations": "1.5.0",
+    "@graphql-codegen/typescript-stencil-apollo": "1.5.0"
   },
   "repository": {
     "type": "git",
