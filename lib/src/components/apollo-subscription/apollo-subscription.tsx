@@ -48,7 +48,7 @@ export class ApolloSubscriptionComponent {
         ...this.options
       }).subscribe(result => {
         this.result = result;
-        this.result.emit(this.result);
+        this.resultEventEmitter.emit(this.result);
       })
       this.readyEventEmitter.emit(this.result);
     } else {
