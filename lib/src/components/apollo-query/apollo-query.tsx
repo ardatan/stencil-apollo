@@ -59,12 +59,12 @@ export class ApolloQueryComponent {
   }
   startSubscription(){
     if (this.client) {
-      const observable = this.client.watchQuery({
+      this.observable = this.client.watchQuery({
         query: this.query,
         variables: this.variables,
         ...this.options
       });
-      this._subscription = observable.subscribe(originalResult => {
+      this._subscription = this.observable.subscribe(originalResult => {
         this.originalResult = originalResult;
         this.resultEventEmitter.emit(this.getResult());
       }, error => {
