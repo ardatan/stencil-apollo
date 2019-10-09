@@ -1,6 +1,7 @@
 ![stencil](https://user-images.githubusercontent.com/25294569/64912199-8750c700-d734-11e9-807b-041fc6fe80d4.gif)
 
 [![npm version](https://badge.fury.io/js/stencil-apollo.svg)](https://badge.fury.io/js/stencil-apollo)
+[![Discord Chat](https://img.shields.io/discord/625400653321076807)](https://discord.gg/xud7bH9)
 
 Stencil-Apollo is a collection of web components built using [Stencil](https://github.com/ionic-team/stencil).
 
