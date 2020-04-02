@@ -32,7 +32,7 @@
     "@stencil/core": "1.8.6",
     "apollo-boost": "0.4.7",
     "graphql": "15.0.0",
-    "graphql-tag": "2.10.2"
+    "graphql-tag": "2.10.3"
   },
   "repository": {
     "type": "git",
