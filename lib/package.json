@@ -24,9 +24,8 @@
     "@stencil/state-tunnel": "1.0.1"
   },
   "peerDependencies": {
-    "apollo-client": "^2.4.13",
-    "graphql": "^14.1.1 || ^15.0.0",
-    "graphql-tag": "^2.10.1"
+    "@apollo/client": "^3.0.0",
+    "graphql": "^14.1.1 || ^15.0.0"
   },
   "devDependencies": {
     "@apollo/client": "^3.2.2",
