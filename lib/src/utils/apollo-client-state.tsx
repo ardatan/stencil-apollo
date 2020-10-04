@@ -1,5 +1,5 @@
 import { h } from '@stencil/core';
-import { ApolloClient } from "apollo-client";
+import { ApolloClient } from "@apollo/client/core";
 import { createProviderConsumer } from "@stencil/state-tunnel";
 
 export interface ApolloClientState<TCacheShape> {

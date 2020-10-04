@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
 import { DocumentNode } from "graphql";
-import { WatchQueryOptions } from "apollo-client";
+import { WatchQueryOptions } from "@apollo/client/core";
 import { QueryRenderer } from  "./types";
 
 export const Query = <TData, TVariables>(

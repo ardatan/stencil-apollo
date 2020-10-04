@@ -1,5 +1,5 @@
 import { h, JSX } from '@stencil/core';
-import { ApolloClient } from "apollo-client";
+import { ApolloClient } from "@apollo/client/core";
 import { ApolloProviderConsumer } from "./apollo-client-state";
 
 export function ApolloProvider<TCacheShape>({ client }: { client: ApolloClient<TCacheShape>, inlist?: JSX.Element | JSX.Element[]}, children: JSX.Element[]){

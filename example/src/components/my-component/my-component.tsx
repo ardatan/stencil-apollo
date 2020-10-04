@@ -1,5 +1,5 @@
 import { Component, Prop, h } from '@stencil/core';
-import ApolloClient from 'apollo-boost';
+import { ApolloClient, InMemoryCache } from '@apollo/client/core';
 import gql from 'graphql-tag';
 
 const ALL_POSTS_QUERY = gql`
@@ -27,7 +27,8 @@ mutation upvotePost($postId: Int!) {
 `;
 
 const client = new ApolloClient({
-    uri: 'https://graphql-voter-app.herokuapp.com/'
+    uri: 'https://graphql-voter-app.herokuapp.com/',
+    cache: new InMemoryCache()
   });
 
 @Component({

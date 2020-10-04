@@ -1,7 +1,7 @@
 import { Component, Prop, State, Element, Watch, Event, EventEmitter } from "@stencil/core";
 import { DocumentNode } from "graphql";
 import { QueryResult, QueryRenderer } from "../../utils/types";
-import { ApolloClient, WatchQueryOptions, ApolloQueryResult, ObservableQuery } from "apollo-client";
+import { ApolloClient, WatchQueryOptions, ApolloQueryResult, ObservableQuery } from "@apollo/client/core";
 import { ApolloProviderConsumer } from "../../utils/apollo-client-state";
 
 @Component({
@@ -20,6 +20,10 @@ export class ApolloQueryComponent {
   @Event({ eventName: 'ready' }) readyEventEmitter: EventEmitter<QueryResult<any>>;
   @Event({ eventName: 'result' }) resultEventEmitter: EventEmitter<QueryResult<any>>;
   private _subscription: ZenObservable.Subscription;
+
+  // without this client not getting injected
+  connectedCallback() { }
+
   componentWillLoad(){
     this.startSubscription();
   }

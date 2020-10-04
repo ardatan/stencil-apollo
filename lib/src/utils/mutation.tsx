@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
 import { DocumentNode } from "graphql";
-import { MutationOptions } from "apollo-client";
+import { MutationOptions } from "@apollo/client/core";
 import { MutationRenderer } from "./types";
 
 export const Mutation = <TData, TVariables>(

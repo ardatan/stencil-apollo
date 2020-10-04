@@ -1,6 +1,6 @@
 import { Component, Prop, Element } from "@stencil/core";
 import { ConsumerRenderer } from "../../utils";
-import { ApolloClient } from "apollo-client";
+import { ApolloClient } from "@apollo/client/core";
 import { ApolloProviderConsumer } from "../../utils/apollo-client-state";
 
 @Component({

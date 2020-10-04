@@ -1,7 +1,7 @@
 import { Component, Prop, State, Element, Watch, Event, EventEmitter } from "@stencil/core";
 import { DocumentNode } from "graphql";
 import { SubscriptionRenderer } from "../../utils/types";
-import { ApolloClient, SubscriptionOptions } from "apollo-client";
+import { ApolloClient, SubscriptionOptions } from "@apollo/client/core";
 import { ApolloProviderConsumer } from "../../utils/apollo-client-state";
 
 @Component({

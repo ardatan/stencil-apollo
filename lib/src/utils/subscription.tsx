@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
 import { DocumentNode } from "graphql";
-import { SubscriptionOptions } from "apollo-client";
+import { SubscriptionOptions } from "@apollo/client/core";
 import { SubscriptionRenderer } from  "./types";
 
 export const Subscription = <TData, TVariables>(

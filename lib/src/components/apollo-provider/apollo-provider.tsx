@@ -1,5 +1,5 @@
 import { h, Component, Prop } from "@stencil/core";
-import { ApolloClient } from 'apollo-client';
+import { ApolloClient } from '@apollo/client/core';
 import { ApolloProviderConsumer } from "../../utils/apollo-client-state";
 import { Declarations } from './declarations';
 
