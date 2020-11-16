@@ -32,7 +32,7 @@ export class ApolloQueryComponent {
     this.stopSubscription();
     this.startSubscription();
   }
-  componentDidUnload(){
+  disconnectedCallback() {
     this.stopSubscription();
   }
   getResult() {
@@ -58,6 +58,10 @@ export class ApolloQueryComponent {
     };
   }
   startSubscription(){
+    if (this._subscription) {
+      return; // Subscription already active
+    }
+
     if (this.client) {
       this.observable = this.client.watchQuery({
         query: this.query,
@@ -79,6 +83,7 @@ export class ApolloQueryComponent {
   stopSubscription(){
     if(this._subscription){
       this._subscription.unsubscribe();
+      this._subscription = null;
     }
   }
   render(){
