@@ -25,13 +25,13 @@
   },
   "peerDependencies": {
     "apollo-client": "^2.4.13",
-    "graphql": "^14.1.1 || ^15.0.0",
+    "graphql": "^14.1.1 || ^15.0.0 || ^16.0.0",
     "graphql-tag": "^2.10.1"
   },
   "devDependencies": {
     "@stencil/core": "1.12.7",
     "apollo-boost": "0.4.7",
-    "graphql": "15.0.0",
+    "graphql": "16.9.0",
     "graphql-tag": "2.10.3"
   },
   "repository": {
